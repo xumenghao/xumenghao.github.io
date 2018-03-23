@@ -6,7 +6,7 @@
     
     
     
-    <title>标签: HTML5 | James Xu</title>
+    <title>tags | James Xu</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -40,11 +40,12 @@
 
     
     <meta property="og:type" content="website">
-<meta property="og:title" content="James Xu">
-<meta property="og:url" content="xumenghao.top/tags/HTML5/index.html">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="xumenghao.top/tags/index.html">
 <meta property="og:site_name" content="James Xu">
+<meta property="og:updated_time" content="2018-03-23T06:01:51.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="James Xu">
+<meta name="twitter:title" content="tags">
     
         <link rel="alternate" type="application/atom+xml" title="James Xu" href="/atom.xml">
     
@@ -59,7 +60,8 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu"  >
+    <aside id="menu" class="hide"
+	 >
 	<div class="inner flex-row-vertical">
 		<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
 			<i class="icon icon-lg icon-close"></i>
@@ -161,7 +163,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">标签: HTML5</div>
+        <div class="flex-col header-title ellipsis">tags</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -178,7 +180,7 @@
         </a>
     </div>
 </header>
-<header class="content-header tags-header">
+<header class="content-header page-header">
     
     <div id="music">
     	
@@ -212,47 +214,64 @@
 </header>
 
 
-    <div class="container body-wrap fade">
+<div class="container body-wrap">
+    <article class="page-article fade" itemprop="blogPage">
         
-            
-            
-            <h5 class="tag-tip">
-                <i class="icon icon-tag"></i>
-                关于
-                <span style="color:rgb(100, 100, 100)">HTML5</span>
-                共1篇文章
-            </h5>
-            <div class="waterfall">
-            
-                <article class="archive-article" onclick="location.href='/posts/4a17b202/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          2018-03-23
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b202/">手机端页面自适应解决方案—rem布局进阶版</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rem布局/">rem布局</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-
-    </div>
-  </article>
-            
+            <div class="card page-about-me flex-row">
+                <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpg"></a>
+                <div class="content flex-col">
+                    <p><strong>James Xu</strong></p>
+                    <p><em></em></p>
+                    <p>我原籍苏州，现任华府伴读小书童，门前一对双花大红棍！</p>
+                </div>
             </div>
         
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        
+    
+
+    
+
+    
+
+
+    </article>
+    
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
 
 </div>
 
@@ -312,7 +331,7 @@
 
 <!-- 主题配置脚本 -->
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </script>
 
 <!-- jquery -->
