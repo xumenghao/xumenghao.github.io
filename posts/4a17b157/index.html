@@ -46,7 +46,7 @@
 <meta property="og:url" content="xumenghao.top/posts/4a17b157/index.html">
 <meta property="og:site_name" content="James Xu">
 <meta property="og:description" content="学习下跨域">
-<meta property="og:updated_time" content="2018-03-23T07:00:49.654Z">
+<meta property="og:updated_time" content="2018-03-23T07:12:50.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常见跨域解决方案">
 <meta name="twitter:description" content="学习下跨域">
@@ -300,8 +300,8 @@
 </blockquote>
 <p>2.b.html：(<a href="http://www.domain2.com/b.html" target="_blank" rel="noopener">http://www.domain2.com/b.html</a>)</p>
 <blockquote>
+<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain1.com/c.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>  &nbsp; var iframe = document.getElementById(‘iframe’);<br>  &nbsp; // 监听a.html传来的hash值，再传给c.html<br>  &nbsp; window.onhashchange = function () {<br>  &nbsp;&nbsp;     iframe.src = iframe.src + location.hash;<br>  &nbsp; };<br><code>&lt;/script&gt;</code></p>
 </blockquote>
-<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain1.com/c.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>   &nbsp; var iframe = document.getElementById(‘iframe’);<br>   &nbsp; // 监听a.html传来的hash值，再传给c.html<br>   &nbsp; window.onhashchange = function () {<br>   &nbsp;&nbsp;     iframe.src = iframe.src + location.hash;<br>   &nbsp; };<br><code>&lt;/script&gt;</code></p>
 <p>3.c.html：(<a href="http://www.domain1.com/c.html" target="_blank" rel="noopener">http://www.domain1.com/c.html</a>)</p>
 <blockquote>
 <p><code>&lt;script&gt;</code><br>   // 监听b.html传来的hash值<br>  &nbsp; window.onhashchange = function () {<br>    &nbsp;&nbsp; // 再通过操作同域a.html的js回调，将结果传回<br>    &nbsp;&nbsp;window.parent.parent.onCallback  (‘hello:’+location.hash.replace(‘#user=’,’’));<br>   &nbsp;};<br><code>&lt;/script&gt;</code></p>
@@ -453,7 +453,7 @@
     <div class="content">
         
 <span class="post-time">
-    Última actualización<time datetime="2018-03-23T07:00:49.654Z" itemprop="dateUpdated">2018-03-23 15:00:49</time>
+    Última actualización<time datetime="2018-03-23T07:12:50.600Z" itemprop="dateUpdated">2018-03-23 15:12:50</time>
 </span>
 
 

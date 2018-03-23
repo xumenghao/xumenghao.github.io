@@ -46,7 +46,7 @@
 <meta property="og:url" content="xumenghao.top/posts/4a17b202/index.html">
 <meta property="og:site_name" content="James Xu">
 <meta property="og:description" content="好玩的rem布局">
-<meta property="og:updated_time" content="2018-03-23T06:38:27.895Z">
+<meta property="og:updated_time" content="2018-03-23T07:37:29.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端页面自适应解决方案—rem布局进阶版">
 <meta name="twitter:description" content="好玩的rem布局">
@@ -255,7 +255,7 @@
 <li>文章底部<strong>常见问题说明第四条</strong> ，笔者已给出一个相当便捷的解决方案，欢迎留言交流。（2018/3/23）</li>
 </ul>
 </blockquote>
-<p>该方案使用相当简单，把下面这段已压缩过的 <strong>原生JS</strong>（仅1kb，源码已在文章底部更新，2017/5/3） 放到 HTML 的 head 标签中即可（注:不要手动设置viewport，该方案自动帮你设置）</p>
+<p>该方案使用相当简单，把下面这段已压缩过的 <strong>原生JS</strong>（仅1kb，源码已在文章底部更新） 放到 HTML 的 head 标签中即可（注:不要手动设置viewport，该方案自动帮你设置）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	!function(e)&#123;function t(a)&#123;if(i[a])return i[a].exports;var n=i[a]=  &#123;exports:&#123;&#125;,id:a,loaded:!1&#125;;return   	e[a].call  (n.exports,n,n.exports,t),n.loaded=!0,n.exports&#125;var i=&#123;&#125;;return        	t.m=e,t.c=i,t.p=&quot;&quot;,t(0)&#125;([function(e,t)&#123;&quot;use   	strict&quot;;Object.defineProperty(t,&quot;__esModule&quot;,	&#123;value:!0&#125;);var   	i=window;t[&quot;default&quot;]	=i.flex=function(normal,e,t)&#123;var   	a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/  	</span><br><span class="line">	(\d&#123;3&#125;)/i),l=o.match(/U3\/	((\d+|	\.)&#123;5,&#125;)/i),c=l&amp;&amp;parseInt(l[1].split(&quot;.&quot;).join(&quot;&quot;),10)&gt;=80,p=naviga	t	or.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&amp;&amp;d[1]&gt;534||c||(s=1);var 	u=normal?1:1/s,m=r.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);m||(m=r.createElement(&quot;meta&quot;),m.setAttribute(	&quot;	name&quot;,&quot;viewport&quot;),r.head.appendChild(m)),m.setAttribute(&quot;content&quot;,&quot;width=device-width,user-scalable=no,i	nitial-scale=&quot;+u+&quot;,maximum-scale=&quot;+u+&quot;,minimum-scale=&quot;+u),r.documentElement.style.fontSize=normal?&quot;50px&quot;	: a/2*s*n+&quot;px&quot;&#125;,e.exports=t[&quot;default&quot;]&#125;]);  flex(false,100, 1);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="代码原理"><a href="#代码原理" class="headerlink" title="代码原理"></a>代码原理</h3><p>这是阿里团队的高清方案布局代码，所谓高清方案就是利用rem的特性（我们知道默认情况下html的1rem = 16px），根据设备屏幕的DPR（设备像素比，又称DPPX，比如dpr=2时，表示1个CSS像素由4个物理像素点组成）<strong>根据设备DPR调整页面的压缩比率（即：1/dpr），同时动态设置 html 的font-size为（50 * dpr)，进而达到高清效果</strong>。</p>
 <h3 id="有何优势"><a href="#有何优势" class="headerlink" title="有何优势"></a>有何优势</h3><ul>
@@ -281,7 +281,7 @@
 <p><strong>3.问：不是 1rem = 100px吗，为什么我的代码写了一个宽度为3rem的元素，在电脑端的谷歌浏览器上宽度只有150px?</strong></p>
 <p>答：先说高清方案代码，再次强调咱们的高清方案代码是根据设备的dpr动态设置html 的 font-size，<br>如果dpr=1(如电脑端），则html的font-size为50px，此时 1rem = 50px<br>如果dpr=2(如iphone 5 和 6），则html的font-size为100px，此时 1rem = 100px<br>如果dpr=3(如iphone 6 sp），则html的font-size为150px，此时 1rem = 150px<br>如果dpr为其他值，即便不是整数，如3.4 , 也是一样直接将dpr 乘以 50 。</p>
 <p>再来说说效果图，一般来讲，我们的效果图宽度要么是640，要么是750，无论哪一个，它们对应设备的dpr=2，此时，1 rem = 50 × 2 = 100px。这也就是为什么高清方案默认1rem = 100px。而将1rem默认100px也是好处多多，可以帮你快速换算单位，比如在750宽度下的效果图，某元素宽度为53px，那么css宽度直接设为53/100=0.53rem了。</p>
-<p>然而极少情况下，有设计师将效果图宽定为1242px，因为他手里只有一个iphone 6 sp (dpr = 3)，设计完效果图刚好可以在他的iphone 6 sp里查看调整。一切完毕之后，他将这个效果图交给你来切图。由于这个效果图对应设备的dpr=3，也就是1rem = 50 × 3 = 150px。所以如果你量取了一个宽度为90px的元素，它的css宽度应该为 90/150=0.6rem。由于咱们的高清方案默认1rem=100px，为了还原效果图，你需要这样换算。当然，一个技巧就是你可以直接修改咱们的高清方案的默认设置。在代码的最后 你会看到 flex(false, 100, 1) ，将其修改成flex(false, 66.66667, 1)（感谢简友：V旅行指出此处错误！ 2017/3/24）就不用那么麻烦的换算了，此时那个90px的直接写成0.9rem就可以了。</p>
+<p>然而极少情况下，有设计师将效果图宽定为1242px，因为他手里只有一个iphone 6 sp (dpr = 3)，设计完效果图刚好可以在他的iphone 6 sp里查看调整。一切完毕之后，他将这个效果图交给你来切图。由于这个效果图对应设备的dpr=3，也就是1rem = 50 × 3 = 150px。所以如果你量取了一个宽度为90px的元素，它的css宽度应该为 90/150=0.6rem。由于咱们的高清方案默认1rem=100px，为了还原效果图，你需要这样换算。当然，一个技巧就是你可以直接修改咱们的高清方案的默认设置。在代码的最后 你会看到 flex(false, 100, 1) ，将其修改成flex(false, 66.66667, 1)就不用那么麻烦的换算了，此时那个90px的直接写成0.9rem就可以了。</p>
 <p><strong>4.问：在此方案下，我如果引用了别的UI库，那些UI库的元素会显得特别小，如何解决？</strong></p>
 <p>答：可以这样去理解问题的原因，如果不用高清方案，别的UI库的元素在移动设备上（假设这个设备是iphone 5好了）显示是正常的，这没有问题，然后我们在这个设备上将该页面截图放到电脑上看，发现宽度是640（问答1解释过了），根据你的像素眼大致测量，你发现这个设备上的某个字体大小应该是12px，而你在电脑上测量应该是24px。</p>
 <p>现在我们使用高清方案去还原这个页面，那么字体大小应该写为 0.24rem 才对！</p>
@@ -293,14 +293,18 @@
 <p><strong>5.问：有时候字体会不受控制的变大，怎么办？</strong></p>
 <p>答：在X5新内核Blink中，在排版页面的时候，会主动对字体进行放大，会检测页面中的主字体，当某一块字体在我们的判定规则中，认为字号较小，并且是页面中的主要字体，就会采取主动放大的操作。然而这不是我们想要的，可以采取给最大高度解决</p>
 <p>解决方案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*, *:before, *:after &#123; max-height: 100000px &#125;</span><br></pre></td></tr></table></figure>
-<p>补充：有同学反映，在一些情况下<code>textarea</code> 标签内的字体大小即便加上上面的方案，字体也会变大，无法控制。此时你需要给 <code>textarea</code> 的 <code>display</code> 设为 <code>table</code> 或者 <code>inline-table</code>即可恢复正常。</p>
+<pre><code>*, *:before, *:after { max-height: 100000px }
+</code></pre><p>补充：有同学反映，在一些情况下<code>textarea</code> 标签内的字体大小即便加上上面的方案，字体也会变大，无法控制。此时你需要给 <code>textarea</code> 的 <code>display</code> 设为 <code>table</code> 或者 <code>inline-table</code>即可恢复正常。</p>
 <p><strong>6.问：我在底部导航用的flex感觉更合适一些，请问这样子混着用可以吗？</strong></p>
 <p>答：咱们的rem适合写固定尺寸。其余的根据需要换成flex或者百分比。源码示例中就有这三种的综合运用。</p>
 <p><strong>7.问：用了这个方案如何使用媒体查询呢？</strong></p>
 <p>一般来讲，使用了这个方案是没必要用媒体查询了，如果你必须要用，假设你要对 iphone5 （css像素宽度320px,<br>这里需要取其物理像素，也就是640）宽度下的类名做处理，你可以这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@media screen and (max-width: 640px) &#123;  </span><br><span class="line">    .yourLayout &#123;  </span><br><span class="line">        width:100%;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>8.问：可以提供下这个高清方案的源码吗？</strong></p>
+<pre><code>@media screen and (max-width: 640px) {  
+    .yourLayout {  
+        width:100%;  
+    }  
+}  
+</code></pre><p><strong>8.问：可以提供下这个高清方案的源码吗？</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   &apos;use strict&apos;  </span><br><span class="line">/**  </span><br><span class="line"> * @param &#123;Boolean&#125; [normal = false] - 默认开启页面压缩以使页面高清;  </span><br><span class="line"> * @param &#123;Number&#125; [baseFontSize = 100] - 基础fontSize, 默认100px;  </span><br><span class="line">    * @param &#123;Number&#125; [fontscale = 1] - 有的业务希望能放大一定比例的字体;  </span><br><span class="line"> */  </span><br><span class="line">const win = window;  </span><br><span class="line">export default win.flex = (normal, baseFontSize, fontscale) =&gt; &#123;  </span><br><span class="line">   const _baseFontSize = baseFontSize || 100;  </span><br><span class="line">   const _fontscale = fontscale || 1;  </span><br><span class="line"></span><br><span class="line">   const doc = win.document;  </span><br><span class="line">   const ua = navigator.userAgent;  </span><br><span class="line">   const matches = ua.match(/Android[\S\s]+AppleWebkit\/(\d&#123;3&#125;)/i);  </span><br><span class="line">   const UCversion = ua.match(/U3\/((\d+|\.)&#123;5,&#125;)/i);  </span><br><span class="line">   const isUCHd = UCversion &amp;&amp; parseInt(UCversion[1].split(&apos;.&apos;).join(&apos;&apos;), 10) &gt;= 80;  </span><br><span class="line">   const isIos = navigator.appVersion.match(/(iphone|ipad|ipod)/gi);  </span><br><span class="line">   let dpr = win.devicePixelRatio || 1;  </span><br><span class="line">   if (!isIos &amp;&amp; !(matches &amp;&amp; matches[1] &gt; 534) &amp;&amp; !isUCHd) &#123;  </span><br><span class="line">     // 如果非iOS, 非Android4.3以上, 非UC内核, 就不执行高清, dpr设为1;  </span><br><span class="line">     dpr = 1;  </span><br><span class="line">   &#125;  </span><br><span class="line">   const scale = normal ? 1 : 1 / dpr;  </span><br><span class="line"></span><br><span class="line">   let metaEl = doc.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);  </span><br><span class="line">   if (!metaEl) &#123;  </span><br><span class="line">     metaEl = doc.createElement(&apos;meta&apos;);  </span><br><span class="line">     metaEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);  </span><br><span class="line">     doc.head.appendChild(metaEl);  </span><br><span class="line">   &#125;  </span><br><span class="line">   metaEl.setAttribute(&apos;content&apos;, `width=device- 	width,user-scalable=no,initial-scale=$&#123;scale&#125;,maximum-scale=$&#123;scale&#125;,minimum-scale=$&#123;scale&#125;`);  </span><br><span class="line">   doc.documentElement.style.fontSize = normal ? &apos;50px&apos; : `$&#123;_baseFontSize / 2 * dpr * _fontscale&#125;px`;  </span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>10.问：我在使用 rem 布局进阶方案的时候遇到了XXX的问题，如何解决？</strong></p>
 <ul>
@@ -315,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    Última actualización<time datetime="2018-03-23T06:38:27.895Z" itemprop="dateUpdated">2018-03-23 14:38:27</time>
+    Última actualización<time datetime="2018-03-23T07:37:29.464Z" itemprop="dateUpdated">2018-03-23 15:37:29</time>
 </span>
 
 
