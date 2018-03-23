@@ -46,7 +46,7 @@
 <meta property="og:url" content="xumenghao.top/posts/4a17b157/index.html">
 <meta property="og:site_name" content="James Xu">
 <meta property="og:description" content="学习下跨域">
-<meta property="og:updated_time" content="2018-03-21T03:30:00.624Z">
+<meta property="og:updated_time" content="2018-03-23T07:00:49.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常见跨域解决方案">
 <meta name="twitter:description" content="学习下跨域">
@@ -240,7 +240,7 @@
         </div>
         <div class="post-count-custom">
             <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">16</span>&nbsp;分钟
+            阅读本文可能花费您&nbsp;<span class="post-count">15</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>学习下跨域</p>
@@ -261,8 +261,8 @@
 <h4 id="一、通过jsonp跨域"><a href="#一、通过jsonp跨域" class="headerlink" title="一、通过jsonp跨域"></a>一、通过jsonp跨域</h4><p> 通常为了减轻web服务器的负载，我们把js、css，img等静态资源分离到另一台独立域名的服务器上，在html页面中再通过相应的标签从不同域名下加载静态资源，而被浏览器允许，基于此原理，我们可以通过动态创建script，再请求一个带参网址实现跨域通信。</p>
 <p> 1.原生实现：</p>
 <blockquote>
+<p><script><br>  &nbsp;&nbsp; var script = document.createElement(‘script’);<br>  &nbsp;&nbsp; script.type = ‘text/javascript’;<br>  &nbsp;&nbsp; // 传参并指定回调执行函数为onBack<br>  &nbsp;&nbsp; script.src = ‘<a href="http://www.domain2.com:8080/login">http://www.domain2.com:8080/login</a>?  user=admin&amp;callback=onBack’;<br>   document.head.appendChild(script);<br>   // 回调执行函数<br>  &nbsp;&nbsp;function onBack(res) {<br>  &nbsp;&nbsp;&nbsp;&nbsp;     alert(JSON.stringify(res));<br>  &nbsp;&nbsp;}<br></script><br>服务端返回如下（返回时即执行全局函数）：</p>
 </blockquote>
-<p><code>&lt;script&gt;</code><br>   &nbsp;&nbsp; var script = document.createElement(‘script’);<br>   &nbsp;&nbsp; script.type = ‘text/javascript’;<br>   &nbsp;&nbsp; // 传参并指定回调执行函数为onBack<br>   &nbsp;&nbsp; script.src = ‘<a href="http://www.domain2.com:8080/login" target="_blank" rel="noopener">http://www.domain2.com:8080/login</a>?  user=admin&amp;callback=onBack’;<br>    document.head.appendChild(script);<br>    // 回调执行函数<br>   &nbsp;&nbsp;function onBack(res) {<br>   &nbsp;&nbsp;&nbsp;&nbsp;     alert(JSON.stringify(res));<br>   &nbsp;&nbsp;}<br><code>&lt;/script&gt;</code><br>服务端返回如下（返回时即执行全局函数）：</p>
 <blockquote>
 <p>onBack({“status”: true, “user”: “admin”})  </p>
 </blockquote>
@@ -286,22 +286,26 @@
 <p>实现原理：两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</p>
 <p>1.父窗口：(<a href="http://www.domain.com/a.html" target="_blank" rel="noopener">http://www.domain.com/a.html</a>)</p>
 <blockquote>
+<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>   &nbsp;&nbsp;document.domain = ‘domain.com’;<br>  &nbsp;&nbsp;var user = ‘admin’;<br><code>&lt;/script&gt;</code></p>
 </blockquote>
-<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>    &nbsp;&nbsp;document.domain = ‘domain.com’;<br>   &nbsp;&nbsp;var user = ‘admin’;<br><code>&lt;/script&gt;</code></p>
 <p>2.子窗口：(<a href="http://child.domain.com/b.html" target="_blank" rel="noopener">http://child.domain.com/b.html</a>)</p>
 <blockquote>
+<p><code>&lt;script&gt;</code><br>  &nbsp; document.domain = ‘domain.com’;<br>  &nbsp; // 获取父窗口中变量<br>  &nbsp; alert(‘get js data from parent —&gt; ‘ + window.parent.user);<br><code>&lt;/script&gt;</code></p>
 </blockquote>
-<p><code>&lt;script&gt;</code><br>   &nbsp; document.domain = ‘domain.com’;<br>   &nbsp; // 获取父窗口中变量<br>   &nbsp; alert(‘get js data from parent —&gt; ‘ + window.parent.user);<br><code>&lt;/script&gt;</code></p>
 <h4 id="三、-location-hash-iframe跨域"><a href="#三、-location-hash-iframe跨域" class="headerlink" title="三、 location.hash + iframe跨域"></a>三、 location.hash + iframe跨域</h4><p>实现原理： a欲与b跨域相互通信，通过中间页c来实现。 三个页面，不同域之间利用iframe的location.hash传值，相同域之间直接js访问来通信。</p>
 <p>具体实现：A域：a.html -&gt; B域：b.html -&gt; A域：c.html，a与b不同域只能通过hash值单向通信，b与c也不同域也只能单向通信，但c与a同域，所以c可通过parent.parent访问a页面所有对象。</p>
 <p>1.a.html：(<a href="http://www.domain1.com/a.html" target="_blank" rel="noopener">http://www.domain1.com/a.html</a>)</p>
 <blockquote>
+<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain2.com/b.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>  &nbsp; var iframe = document.getElementById(‘iframe’);<br>  &nbsp; // 向b.html传hash值<br>  &nbsp; setTimeout(function() {<br>  &nbsp;&nbsp;     iframe.src = iframe.src + ‘#user=admin’;<br>  &nbsp;}, 1000);<br>  &nbsp; // 开放给同域c.html的回调方法<br>  &nbsp;&nbsp;     alert(‘data from c.html —&gt; ‘ + res);<br>  &nbsp; }<br><code>&lt;/script&gt;</code></p>
 </blockquote>
-<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain2.com/b.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>   &nbsp; var iframe = document.getElementById(‘iframe’);<br>   &nbsp; // 向b.html传hash值<br>   &nbsp; setTimeout(function() {<br>   &nbsp;&nbsp;     iframe.src = iframe.src + ‘#user=admin’;<br>   &nbsp;}, 1000);<br>   &nbsp; // 开放给同域c.html的回调方法<br>   &nbsp;&nbsp;     alert(‘data from c.html —&gt; ‘ + res);<br>   &nbsp; }<br><code>&lt;/script&gt;</code><br>2.b.html：(<a href="http://www.domain2.com/b.html" target="_blank" rel="noopener">http://www.domain2.com/b.html</a>)</p>
+<p>2.b.html：(<a href="http://www.domain2.com/b.html" target="_blank" rel="noopener">http://www.domain2.com/b.html</a>)</p>
 <blockquote>
 </blockquote>
-<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain1.com/c.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>   &nbsp; var iframe = document.getElementById(‘iframe’);<br>   &nbsp; // 监听a.html传来的hash值，再传给c.html<br>   &nbsp; window.onhashchange = function () {<br>   &nbsp;&nbsp;     iframe.src = iframe.src + location.hash;<br>   &nbsp; };<br><code>&lt;/script&gt;</code><br>3.c.html：(<a href="http://www.domain1.com/c.html" target="_blank" rel="noopener">http://www.domain1.com/c.html</a>)</p>
-<p><code>&lt;script&gt;</code><br>    // 监听b.html传来的hash值<br>   &nbsp; window.onhashchange = function () {<br>     &nbsp;&nbsp; // 再通过操作同域a.html的js回调，将结果传回<br>     &nbsp;&nbsp;window.parent.parent.onCallback  (‘hello:’+location.hash.replace(‘#user=’,’’));<br>    &nbsp;};<br><code>&lt;/script&gt;</code></p>
+<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain1.com/c.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>   &nbsp; var iframe = document.getElementById(‘iframe’);<br>   &nbsp; // 监听a.html传来的hash值，再传给c.html<br>   &nbsp; window.onhashchange = function () {<br>   &nbsp;&nbsp;     iframe.src = iframe.src + location.hash;<br>   &nbsp; };<br><code>&lt;/script&gt;</code></p>
+<p>3.c.html：(<a href="http://www.domain1.com/c.html" target="_blank" rel="noopener">http://www.domain1.com/c.html</a>)</p>
+<blockquote>
+<p><code>&lt;script&gt;</code><br>   // 监听b.html传来的hash值<br>  &nbsp; window.onhashchange = function () {<br>    &nbsp;&nbsp; // 再通过操作同域a.html的js回调，将结果传回<br>    &nbsp;&nbsp;window.parent.parent.onCallback  (‘hello:’+location.hash.replace(‘#user=’,’’));<br>   &nbsp;};<br><code>&lt;/script&gt;</code></p>
+</blockquote>
 <h4 id="四、-window-name-iframe跨域"><a href="#四、-window-name-iframe跨域" class="headerlink" title="四、 window.name + iframe跨域"></a>四、 window.name + iframe跨域</h4><p>window.name属性的独特之处：name值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）。</p>
 <p>1.a.html：(<a href="http://www.domain1.com/a.html" target="_blank" rel="noopener">http://www.domain1.com/a.html</a>)</p>
 <blockquote>
@@ -316,8 +320,9 @@
 <p>2.proxy.html：(<a href="http://www.domain1.com/proxy…" target="_blank" rel="noopener">http://www.domain1.com/proxy…</a>.<br>中间代理页，与a.html同域，内容为空即可。</p>
 <p>3.b.html：(<a href="http://www.domain2.com/b.html" target="_blank" rel="noopener">http://www.domain2.com/b.html</a>)</p>
 <blockquote>
+<p><code>&lt;script&gt;</code><br>  &nbsp;&nbsp;window.name = ‘This is domain2 data!’;<br><code>&lt;/script&gt;</code> </p>
 </blockquote>
-<p><code>&lt;script&gt;</code><br>   &nbsp;&nbsp; window.name = ‘This is domain2 data!’;<br><code>&lt;/script&gt;</code><br>总结：通过iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。</p>
+<p>总结：通过iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。</p>
 <h4 id="五、-postMessage跨域"><a href="#五、-postMessage跨域" class="headerlink" title="五、 postMessage跨域"></a>五、 postMessage跨域</h4><p>postMessage是HTML5 XMLHttpRequest Level 2中的API，且是为数不多可以跨域操作的window属性之一，它可用于解决以下方面的问题：</p>
 <ul>
 <li>页面和其打开的新窗口的数据传递</li>
@@ -328,20 +333,11 @@
 <p>用法：postMessage(data,origin)方法接受两个参数<br>data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。<br>origin： 协议+主机+端口号，也可以设置为”*”，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为”/”。</p>
 <p>1.a.html：(<a href="http://www.domain1.com/a.html" target="_blank" rel="noopener">http://www.domain1.com/a.html</a>)</p>
 <blockquote>
+<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain2.com/b.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>   &nbsp;var iframe = document.getElementById(‘iframe’);<br>   &nbsp;iframe.onload = function() {<br>       &nbsp;&nbsp;var data = {<br>           &nbsp;&nbsp;&nbsp;name: ‘aym’<br>       &nbsp;};<br>      &nbsp; // 向domain2传送跨域数据<br>       &nbsp;iframe.contentWindow.postMessage(JSON.stringify(data),’<a href="http://www.domain2.com&#39;)" target="_blank" rel="noopener">http://www.domain2.com&#39;)</a>;<br>   };<br>  &nbsp; // 接受domain2返回数据<br>  &nbsp; window.addEventListener(‘message’, function(e) {<br>   &nbsp;&nbsp;    alert(‘data from domain2 —&gt; ‘ + e.data);<br>   &nbsp;&nbsp;}, false);<br><code>&lt;/script&gt;</code></p>
 </blockquote>
-<p><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://www.domain2.com/b.html&quot; style=&quot;display:none;&quot;&gt;&lt;/iframe&gt;</code><br><code>&lt;script&gt;</code><br>    &nbsp;var iframe = document.getElementById(‘iframe’);<br>    &nbsp;iframe.onload = function() {<br>        &nbsp;&nbsp;var data = {<br>            &nbsp;&nbsp;&nbsp;name: ‘aym’<br>        &nbsp;};<br>       &nbsp; // 向domain2传送跨域数据<br>        &nbsp;iframe.contentWindow.postMessage(JSON.stringify(data),’<a href="http://www.domain2.com&#39;)" target="_blank" rel="noopener">http://www.domain2.com&#39;)</a>;<br>    };<br>   &nbsp; // 接受domain2返回数据<br>   &nbsp; window.addEventListener(‘message’, function(e) {<br>    &nbsp;&nbsp;    alert(‘data from domain2 —&gt; ‘ + e.data);<br>    &nbsp;&nbsp;}, false);<br><code>&lt;/script&gt;</code><br>2.）b.html：(<a href="http://www.domain2.com/b.html" target="_blank" rel="noopener">http://www.domain2.com/b.html</a>)</p>
+<p>2.）b.html：(<a href="http://www.domain2.com/b.html" target="_blank" rel="noopener">http://www.domain2.com/b.html</a>)</p>
 <blockquote>
-</blockquote>
-<p><code>&lt;script&gt;</code><br>// 接收domain1的数据<br>window.addEventListener(‘message’, function(e) {<br> &nbsp;&nbsp;alert(‘data from domain1 —&gt; ‘ + e.data);  </p>
-<blockquote>
-<pre><code>   var data = JSON.parse(e.data);  
-   &amp;nbsp;  if (data) {  
-        &amp;nbsp;&amp;nbsp;data.number = 16;   
-      &amp;nbsp;&amp;nbsp; // 处理后再发回domain1  
-       &amp;nbsp;&amp;nbsp; window.parent.postMessage(JSON.stringify  (data), &amp;nbsp;&amp;nbsp;&amp;nbsp;&apos;http://www.domain1.com&apos;);  
-   &amp;nbsp;&amp;nbsp; }  
-}, false);  
-</code></pre><p><code>&lt;/script&gt;</code></p>
+<p><code>&lt;script&gt;</code><br>// 接收domain1的数据<br>window.addEventListener(‘message’, function(e) {<br>&nbsp;&nbsp;alert(‘data from domain1 —&gt; ‘ + e.data);<br>       var data = JSON.parse(e.data);<br>      &nbsp;  if (data) {<br>           &nbsp;&nbsp;data.number = 16;<br>          &nbsp;&nbsp; // 处理后再发回domain1<br>          &nbsp;&nbsp; window.parent.postMessage(JSON.stringify  (data), &gt;&nbsp;&nbsp;&nbsp;’<a href="http://www.domain1.com&#39;)" target="_blank" rel="noopener">http://www.domain1.com&#39;)</a>;<br>      &nbsp;&nbsp; }<br>   }, false);<br><code>&lt;/script&gt;</code></p>
 </blockquote>
 <h4 id="六、-跨域资源共享（CORS）"><a href="#六、-跨域资源共享（CORS）" class="headerlink" title="六、 跨域资源共享（CORS）"></a>六、 跨域资源共享（CORS）</h4><p>普通跨域请求：只服务端设置Access-Control-Allow-Origin即可，前端无须设置。<br>带cookie请求：前后端都需要设置字段，另外需注意：所带cookie为跨域请求接口所在域的cookie，而非当前页。<br>目前，所有浏览器都支持该功能(IE8+：IE8/9需要使用XDomainRequest对象来支持CORS）)，CORS也已经成为主流的跨域解决方案。</p>
 <p>一、前端设置：</p>
@@ -395,12 +391,7 @@
 <p>实现思路：通过nginx配置一个代理服务器（域名与domain1相同，端口不同）做跳板机，反向代理访问domain2接口，并且可以顺便修改cookie中domain信息，方便当前域cookie写入，实现跨域登录。</p>
 <p>nginx具体配置：</p>
 <blockquote>
-<p>#proxy服务器<br>server {<br>   listen       81;<br>   server_name  <a href="http://www.domain1.com" target="_blank" rel="noopener">www.domain1.com</a>;</p>
-<p>   location / {<br>       proxy_pass   <a href="http://www.domain2.com:8080" target="_blank" rel="noopener">http://www.domain2.com:8080</a>;  #反向代理<br>       proxy_cookie_domain <a href="http://www.domain2.com" target="_blank" rel="noopener">www.domain2.com</a> <a href="http://www.domain1.com" target="_blank" rel="noopener">www.domain1.com</a>; #修改cookie里域名<br>       index  index.html index.htm;</p>
-<pre><code># 当用webpack-dev-server等中间件代理接口访问nignx时，此时无浏览器参与，故没有同源限制，下面的跨域配置可不启用
-add_header Access-Control-Allow-Origin http://www.domain1.com;  #当前端只跨域不带cookie时，可为*
-add_header Access-Control-Allow-Credentials true;
-</code></pre><p>   }<br>}</p>
+<p>#proxy服务器<br>server {<br>   listen       81;<br>   server_name  <a href="http://www.domain1.com" target="_blank" rel="noopener">www.domain1.com</a>;<br>   location / {<br>       proxy_pass   <a href="http://www.domain2.com:8080" target="_blank" rel="noopener">http://www.domain2.com:8080</a>;  #反向代理<br>       proxy_cookie_domain <a href="http://www.domain2.com" target="_blank" rel="noopener">www.domain2.com</a> <a href="http://www.domain1.com" target="_blank" rel="noopener">www.domain1.com</a>; #修改cookie里域名<br>       index  index.html index.htm;<br>       当用webpack-dev-server等中间件代理接口访问nignx时，此时无浏览器参与，故没有同源限制，下面的跨域配置可不启用<br>       add_header Access-Control-Allow-Origin <a href="http://www.domain1.com" target="_blank" rel="noopener">http://www.domain1.com</a>;  #当前端只跨域不带cookie时，可为*<br>       add_header Access-Control-Allow-Credentials true;<br>   }<br>}</p>
 </blockquote>
 <p>1.前端代码示例：</p>
 <blockquote>
@@ -446,25 +437,15 @@ add_header Access-Control-Allow-Credentials true;
 <p>1.前端代码：</p>
 <blockquote>
 <p><code>&lt;div&gt;user input：&lt;input type=&quot;text&quot;&gt;&lt;/div&gt;</code>  </p>
+<p><code>&lt;script src=&quot;./socket.io.js&quot;&lt;/script&gt;</code><br>var socket = io(‘<a href="http://www.domain2.com:8080&#39;)" target="_blank" rel="noopener">http://www.domain2.com:8080&#39;)</a>;<br>// 连接成功处理<br>socket.on(‘connect’, function() {<br>&nbsp;&nbsp;    // 监听服务端消息<br>&nbsp;&nbsp;    socket.on(‘message’, function(msg) {<br>&nbsp;&nbsp;&nbsp;&nbsp;       console.log(‘data from server: —&gt; ‘ + msg);<br>&nbsp;&nbsp;    });<br>&nbsp;&nbsp;   // 监听服务端关闭<br>&nbsp;&nbsp;    socket.on(‘disconnect’, function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;        console.log(‘Server socket has closed.’);<br>&nbsp;&nbsp;    });<br>});<br>document.getElementsByTagName(‘input’)[0].onblur =   function() {<br>&nbsp;&nbsp;    socket.send(this.value);<br>};<br>2.Nodejs socket后台：</p>
 </blockquote>
-<p> <code>&lt;script src=&quot;./socket.io.js&quot;&lt;/script&gt;</code><br>var socket = io(‘<a href="http://www.domain2.com:8080&#39;)" target="_blank" rel="noopener">http://www.domain2.com:8080&#39;)</a>;<br>// 连接成功处理<br>socket.on(‘connect’, function() {<br>&nbsp;&nbsp;    // 监听服务端消息<br>&nbsp;&nbsp;    socket.on(‘message’, function(msg) {<br>&nbsp;&nbsp;&nbsp;&nbsp;       console.log(‘data from server: —&gt; ‘ + msg);<br>&nbsp;&nbsp;    });<br>&nbsp;&nbsp;   // 监听服务端关闭<br>&nbsp;&nbsp;    socket.on(‘disconnect’, function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;        console.log(‘Server socket has closed.’);<br>&nbsp;&nbsp;    });<br>});<br>document.getElementsByTagName(‘input’)[0].onblur =   function() {<br>&nbsp;&nbsp;    socket.send(this.value);<br>};</p>
-<p>2.Nodejs socket后台：</p>
 <blockquote>
-</blockquote>
 <p>var http = require(‘http’);<br>var socket = require(‘socket.io’);<br>// 启http服务</p>
-<blockquote>
-</blockquote>
-<p>var server = http.createServer(function(req, res) {<br>&nbsp;&nbsp;    res.writeHead(200, {  </p>
-<blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;        ‘Content-type’: ‘text/html’<br>&nbsp;&nbsp;    });<br>&nbsp;&nbsp;    res.end();<br>});  </p>
-</blockquote>
+<p>var server = http.createServer(function(req, res) {<br>&nbsp;&nbsp;    res.writeHead(200, {<br>&nbsp;&nbsp;&nbsp;&nbsp;        ‘Content-type’: ‘text/html’<br>&nbsp;&nbsp;    });<br>&nbsp;&nbsp;    res.end();<br>});  </p>
 <p>server.listen(‘8080’);<br>console.log(‘Server is running at port 8080…’);  </p>
-<blockquote>
-</blockquote>
 <p>// 监听socket连接<br>socket.listen(server).on(‘connection’, function(client) {<br>&nbsp;&nbsp;    // 接收信息<br>&nbsp;&nbsp;    client.on(‘message’, function(msg) {<br>&nbsp;&nbsp;&nbsp;&nbsp;        client.send(‘hello：’ + sg);<br>&nbsp;&nbsp;&nbsp;&nbsp;        console.log(‘data from client: —&gt; ‘ + msg);<br>&nbsp;&nbsp;    });  </p>
-<blockquote>
-</blockquote>
 <p>&nbsp;&nbsp;    // 断开处理<br>&nbsp;&nbsp;    client.on(‘disconnect’, function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;        console.log(‘Client socket has closed.’);<br>&nbsp;&nbsp;    });<br>});</p>
+</blockquote>
 
         </div>
 
@@ -472,7 +453,7 @@ add_header Access-Control-Allow-Credentials true;
     <div class="content">
         
 <span class="post-time">
-    Última actualización<time datetime="2018-03-21T03:30:00.624Z" itemprop="dateUpdated">2018-03-21 11:30:00</time>
+    Última actualización<time datetime="2018-03-23T07:00:49.654Z" itemprop="dateUpdated">2018-03-23 15:00:49</time>
 </span>
 
 
