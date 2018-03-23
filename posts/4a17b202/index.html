@@ -46,7 +46,7 @@
 <meta property="og:url" content="xumenghao.top/posts/4a17b202/index.html">
 <meta property="og:site_name" content="James Xu">
 <meta property="og:description" content="好玩的rem布局">
-<meta property="og:updated_time" content="2018-03-23T07:37:29.464Z">
+<meta property="og:updated_time" content="2018-03-23T07:41:28.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端页面自适应解决方案—rem布局进阶版">
 <meta name="twitter:description" content="好玩的rem布局">
@@ -173,7 +173,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Búsqueda">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -256,7 +256,10 @@
 </ul>
 </blockquote>
 <p>该方案使用相当简单，把下面这段已压缩过的 <strong>原生JS</strong>（仅1kb，源码已在文章底部更新） 放到 HTML 的 head 标签中即可（注:不要手动设置viewport，该方案自动帮你设置）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	!function(e)&#123;function t(a)&#123;if(i[a])return i[a].exports;var n=i[a]=  &#123;exports:&#123;&#125;,id:a,loaded:!1&#125;;return   	e[a].call  (n.exports,n,n.exports,t),n.loaded=!0,n.exports&#125;var i=&#123;&#125;;return        	t.m=e,t.c=i,t.p=&quot;&quot;,t(0)&#125;([function(e,t)&#123;&quot;use   	strict&quot;;Object.defineProperty(t,&quot;__esModule&quot;,	&#123;value:!0&#125;);var   	i=window;t[&quot;default&quot;]	=i.flex=function(normal,e,t)&#123;var   	a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/  	</span><br><span class="line">	(\d&#123;3&#125;)/i),l=o.match(/U3\/	((\d+|	\.)&#123;5,&#125;)/i),c=l&amp;&amp;parseInt(l[1].split(&quot;.&quot;).join(&quot;&quot;),10)&gt;=80,p=naviga	t	or.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&amp;&amp;d[1]&gt;534||c||(s=1);var 	u=normal?1:1/s,m=r.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);m||(m=r.createElement(&quot;meta&quot;),m.setAttribute(	&quot;	name&quot;,&quot;viewport&quot;),r.head.appendChild(m)),m.setAttribute(&quot;content&quot;,&quot;width=device-width,user-scalable=no,i	nitial-scale=&quot;+u+&quot;,maximum-scale=&quot;+u+&quot;,minimum-scale=&quot;+u),r.documentElement.style.fontSize=normal?&quot;50px&quot;	: a/2*s*n+&quot;px&quot;&#125;,e.exports=t[&quot;default&quot;]&#125;]);  flex(false,100, 1);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;script&gt;
+!function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p=&quot;&quot;,t(0)}([function(e,t){&quot;use strict&quot;;Object.defineProperty(t,&quot;__esModule&quot;,{value:!0});var i=window;t[&quot;default&quot;]=i.flex=function(normal,e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&amp;&amp;parseInt(l[1].split(&quot;.&quot;).join(&quot;&quot;),10)&gt;=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&amp;&amp;d[1]&gt;534||c||(s=1);var u=normal?1:1/s,m=r.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);m||(m=r.createElement(&quot;meta&quot;),m.setAttribute(&quot;name&quot;,&quot;viewport&quot;),r.head.appendChild(m)),m.setAttribute(&quot;content&quot;,&quot;width=device-width,user-scalable=no,initial-scale=&quot;+u+&quot;,maximum-scale=&quot;+u+&quot;,minimum-scale=&quot;+u),r.documentElement.style.fontSize=normal?&quot;50px&quot;: a/2*s*n+&quot;px&quot;},e.exports=t[&quot;default&quot;]}]);  flex(false,100, 1);
+&lt;/script&gt;
+</code></pre><p>作者：<em>minooo</em><br>链接：<a href="https://www.jianshu.com/p/985d26b40199" target="_blank" rel="noopener">https://www.jianshu.com/p/985d26b40199</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h3 id="代码原理"><a href="#代码原理" class="headerlink" title="代码原理"></a>代码原理</h3><p>这是阿里团队的高清方案布局代码，所谓高清方案就是利用rem的特性（我们知道默认情况下html的1rem = 16px），根据设备屏幕的DPR（设备像素比，又称DPPX，比如dpr=2时，表示1个CSS像素由4个物理像素点组成）<strong>根据设备DPR调整页面的压缩比率（即：1/dpr），同时动态设置 html 的font-size为（50 * dpr)，进而达到高清效果</strong>。</p>
 <h3 id="有何优势"><a href="#有何优势" class="headerlink" title="有何优势"></a>有何优势</h3><ul>
 <li>引用简单，布局简便</li>
@@ -266,8 +269,11 @@
 </ul>
 <h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>重要的事情说三遍！<br><strong>绝不是每个地方都要用rem，rem只适用于固定尺寸</strong>！<br><strong>绝不是每个地方都要用rem，rem只适用于固定尺寸</strong>！<br><strong>绝不是每个地方都要用rem，rem只适用于固定尺寸</strong>！<br>在相当数量的布局情境中（比如底部导航元素平分屏幕宽，大尺寸元素），你必须使用百分比或者flex才能完美布局！</p>
 <p>看过 <a href="&quot;https://www.jianshu.com/p/b00cd3506782&quot;">‘《手机端页面自适应解决方案—rem布局》’</a>的朋友，应该对rem有所了解，这里不再赘述，<br><strong>此方案也是默认 1rem = 100px，所以你布局的时候，完全可以按照设计师给你的效果图写各种尺寸啦</strong>。<br>比如你在效果图上量取的某个按钮元素长 55px, 宽37px ，那你直接可以这样写样式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.myBtn &#123;  </span><br><span class="line">   width: 0.55rem;  </span><br><span class="line">   height: 0.37rem;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo"><a href="#为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo" class="headerlink" title="为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo"></a>为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo</h3><p><a href="&quot;https://link.jianshu.com/?t=https%3A%2F%2Fminooo.github.io%2FDemo%2Freact-study-step-03-demo%2Findex.html&quot;">实践应用1（请在手机端或者手机模式下浏览效果更佳！）</a></p>
+<pre><code>.myBtn {  
+   width: 0.55rem;  
+   height: 0.37rem;  
+}  
+</code></pre><h3 id="为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo"><a href="#为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo" class="headerlink" title="为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo"></a>为了让朋友们更清晰感受此方案的巨大优势，下面是源码和Demo</h3><p><a href="&quot;https://link.jianshu.com/?t=https%3A%2F%2Fminooo.github.io%2FDemo%2Freact-study-step-03-demo%2Findex.html&quot;">实践应用1（请在手机端或者手机模式下浏览效果更佳！）</a></p>
 <p><a href="&quot;https://link.jianshu.com/?t=https%3A%2F%2Fminooo.github.io%2FDemo%2Freact-study-step-04-demo%2Findex.html&quot;">实践应用2（请在手机端或者手机模式下浏览效果更佳！）</a></p>
 <p><a href="&quot;http://m.jr.duduapp.net/&quot;">线上项目（请在手机端或者手机模式下浏览效果更佳！）</a></p>
 <p><a href="&quot;https://codepen.io/minooo/pen/WoQjKW?editors=1100&quot;">示例源码</a></p>
@@ -305,8 +311,40 @@
     }  
 }  
 </code></pre><p><strong>8.问：可以提供下这个高清方案的源码吗？</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   &apos;use strict&apos;  </span><br><span class="line">/**  </span><br><span class="line"> * @param &#123;Boolean&#125; [normal = false] - 默认开启页面压缩以使页面高清;  </span><br><span class="line"> * @param &#123;Number&#125; [baseFontSize = 100] - 基础fontSize, 默认100px;  </span><br><span class="line">    * @param &#123;Number&#125; [fontscale = 1] - 有的业务希望能放大一定比例的字体;  </span><br><span class="line"> */  </span><br><span class="line">const win = window;  </span><br><span class="line">export default win.flex = (normal, baseFontSize, fontscale) =&gt; &#123;  </span><br><span class="line">   const _baseFontSize = baseFontSize || 100;  </span><br><span class="line">   const _fontscale = fontscale || 1;  </span><br><span class="line"></span><br><span class="line">   const doc = win.document;  </span><br><span class="line">   const ua = navigator.userAgent;  </span><br><span class="line">   const matches = ua.match(/Android[\S\s]+AppleWebkit\/(\d&#123;3&#125;)/i);  </span><br><span class="line">   const UCversion = ua.match(/U3\/((\d+|\.)&#123;5,&#125;)/i);  </span><br><span class="line">   const isUCHd = UCversion &amp;&amp; parseInt(UCversion[1].split(&apos;.&apos;).join(&apos;&apos;), 10) &gt;= 80;  </span><br><span class="line">   const isIos = navigator.appVersion.match(/(iphone|ipad|ipod)/gi);  </span><br><span class="line">   let dpr = win.devicePixelRatio || 1;  </span><br><span class="line">   if (!isIos &amp;&amp; !(matches &amp;&amp; matches[1] &gt; 534) &amp;&amp; !isUCHd) &#123;  </span><br><span class="line">     // 如果非iOS, 非Android4.3以上, 非UC内核, 就不执行高清, dpr设为1;  </span><br><span class="line">     dpr = 1;  </span><br><span class="line">   &#125;  </span><br><span class="line">   const scale = normal ? 1 : 1 / dpr;  </span><br><span class="line"></span><br><span class="line">   let metaEl = doc.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);  </span><br><span class="line">   if (!metaEl) &#123;  </span><br><span class="line">     metaEl = doc.createElement(&apos;meta&apos;);  </span><br><span class="line">     metaEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);  </span><br><span class="line">     doc.head.appendChild(metaEl);  </span><br><span class="line">   &#125;  </span><br><span class="line">   metaEl.setAttribute(&apos;content&apos;, `width=device- 	width,user-scalable=no,initial-scale=$&#123;scale&#125;,maximum-scale=$&#123;scale&#125;,minimum-scale=$&#123;scale&#125;`);  </span><br><span class="line">   doc.documentElement.style.fontSize = normal ? &apos;50px&apos; : `$&#123;_baseFontSize / 2 * dpr * _fontscale&#125;px`;  </span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>10.问：我在使用 rem 布局进阶方案的时候遇到了XXX的问题，如何解决？</strong></p>
+<pre><code>&apos;use strict&apos;  
+/**  
+ * @param {Boolean} [normal = false] - 默认开启页面压缩以使页面高清;  
+ * @param {Number} [baseFontSize = 100] - 基础fontSize, 默认100px;  
+ * @param {Number} [fontscale = 1] - 有的业务希望能放大一定比例的字体;  
+ */  
+const win = window;  
+export default win.flex = (normal, baseFontSize, fontscale) =&gt; {  
+const _baseFontSize = baseFontSize || 100;  
+const _fontscale = fontscale || 1;  
+
+const doc = win.document;  
+const ua = navigator.userAgent;  
+const matches = ua.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i);  
+const UCversion = ua.match(/U3\/((\d+|\.){5,})/i);  
+const isUCHd = UCversion &amp;&amp; parseInt(UCversion[1].split(&apos;.&apos;).join(&apos;&apos;), 10) &gt;= 80;  
+const isIos = navigator.appVersion.match(/(iphone|ipad|ipod)/gi);  
+let dpr = win.devicePixelRatio || 1;  
+if (!isIos &amp;&amp; !(matches &amp;&amp; matches[1] &gt; 534) &amp;&amp; !isUCHd) {  
+  // 如果非iOS, 非Android4.3以上, 非UC内核, 就不执行高清, dpr设为1;  
+  dpr = 1;  
+}  
+const scale = normal ? 1 : 1 / dpr;  
+
+let metaEl = doc.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);  
+if (!metaEl) {  
+  metaEl = doc.createElement(&apos;meta&apos;);  
+  metaEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);  
+  doc.head.appendChild(metaEl);  
+}  
+metaEl.setAttribute(&apos;content&apos;, `width=device-     width,user-scalable=no,initial-scale=${scale},maximum-scale=${scale},minimum-scale=${scale}`);  
+doc.documentElement.style.fontSize = normal ? &apos;50px&apos; : `${_baseFontSize / 2 * dpr * _fontscale}px`;  
+};   
+</code></pre><p><strong>10.问：我在使用 rem 布局进阶方案的时候遇到了XXX的问题，如何解决？</strong></p>
 <ul>
 <li>此方案久经考验，具有普遍适用性，自身出致命问题的情况很少，至少笔者是没遇到过。</li>
 <li>绝大多数你遇到的问题，都是由于对rem布局理解不到位导致的。本文对rem布局做了大量的解释说明，配置了若干 demo，你可以把你遇到的问题放到demo里测试。遇到问题时，首先问自己，为什么这明显的错误大家没遇到就我遇到了？？</li>
@@ -319,7 +357,7 @@
     <div class="content">
         
 <span class="post-time">
-    Última actualización<time datetime="2018-03-23T07:37:29.464Z" itemprop="dateUpdated">2018-03-23 15:37:29</time>
+    Last updated: <time datetime="2018-03-23T07:41:28.733Z" itemprop="dateUpdated">2018-03-23 15:41:28</time>
 </span>
 
 
@@ -471,7 +509,7 @@
         </span>
         <br/>
 
-        <span class="license">Este blog está licenciado bajo una <a rel="license" rel="external nofollow" href="https://creativecommons.org/licenses/by/4.0/">licencia internacional Creative Commons Attribution 4.0</a>.</span>
+        <span class="license">This blog is licensed under a <a rel="license" rel="external nofollow" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
     </div>
 </footer>
 
