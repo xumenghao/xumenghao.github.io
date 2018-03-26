@@ -49,13 +49,13 @@ jsonContent:
 # URL
 url: xumenghao.top/
 root: /
-permalink: /posts/:abbrlink/  # **Ò»¶¨ÒªÅäÖÃºÃÕâÀï£¬·Ç³£ÖØÒª**
+permalink: /posts/:abbrlink/  # **Ò»ï¿½ï¿½Òªï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï£¬ï¿½Ç³ï¿½ï¿½ï¿½Òª**
 permalink_defaults:
 
 # abbrlink config
 abbrlink:
-  alg: crc32  # Ëã·¨£ºcrc16(default) and crc32
-  rep: hex    # ½øÖÆ£ºdec(default) and hex
+  alg: crc32  # ï¿½ã·¨ï¿½ï¿½crc16(default) and crc32
+  rep: hex    # ï¿½ï¿½ï¿½Æ£ï¿½dec(default) and hex
 # emoji
 githubEmojis:
   enable: true
@@ -82,7 +82,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
