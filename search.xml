@@ -3,15 +3,6 @@
   
     
     <entry>
-      <title>test</title>
-      <link href="//posts/d87f7e0c/"/>
-      <url>//posts/d87f7e0c/</url>
-      <content type="html"><![CDATA[]]></content>
-      
-      
-    </entry>
-    
-    <entry>
       <title>手机端页面自适应解决方案—rem布局进阶版</title>
       <link href="//posts/4a17b202/"/>
       <url>//posts/4a17b202/</url>
@@ -26,11 +17,11 @@
       
         <tags>
             
+            <tag> 前端 </tag>
+            
             <tag> rem布局 </tag>
             
             <tag> HTML5 </tag>
-            
-            <tag> 前端 </tag>
             
         </tags>
       

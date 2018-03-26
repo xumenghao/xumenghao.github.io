@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xumenghao.top/"/>
-  <updated>2018-03-23T06:19:36.098Z</updated>
+  <updated>2018-03-23T07:41:28.733Z</updated>
   <id>xumenghao.top/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>test</title>
-    <link href="xumenghao.top//posts/d87f7e0c/"/>
-    <id>xumenghao.top//posts/d87f7e0c/</id>
-    <published>2018-03-23T06:16:13.000Z</published>
-    <updated>2018-03-23T06:19:36.098Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>手机端页面自适应解决方案—rem布局进阶版</title>
@@ -48,11 +34,11 @@
       <category term="Web前端" scheme="xumenghao.top/categories/Web%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="前端" scheme="xumenghao.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="rem布局" scheme="xumenghao.top/tags/rem%E5%B8%83%E5%B1%80/"/>
     
       <category term="HTML5" scheme="xumenghao.top/tags/HTML5/"/>
-    
-      <category term="前端" scheme="xumenghao.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
