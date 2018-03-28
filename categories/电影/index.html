@@ -6,7 +6,7 @@
     
     
     
-    <title>James Xu</title>
+    <title>分类: 电影 | James Xu</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -41,7 +41,7 @@
     
     <meta property="og:type" content="website">
 <meta property="og:title" content="James Xu">
-<meta property="og:url" content="xumenghao.top/index.html">
+<meta property="og:url" content="xumenghao.top/categories/电影/index.html">
 <meta property="og:site_name" content="James Xu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="James Xu">
@@ -81,7 +81,7 @@
 
 			<ul class="nav">
 				
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/"  >
                     <i class="icon icon-lg icon-home"></i>
                     <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
@@ -95,7 +95,7 @@
                   </a>
               </li>
             
-              <li class="waves-block waves-effect">
+              <li class="waves-block waves-effect active">
                   <a href="/categories"  >
                     <i class="icon icon-lg icon-th-list"></i>
                     <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
@@ -161,7 +161,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">James Xu</div>
+        <div class="flex-col header-title ellipsis">分类: 电影</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -178,7 +178,7 @@
         </a>
     </div>
 </header>
-<header class="content-header index-header">
+<header class="content-header categories-header">
     
     <div id="music">
     	
@@ -187,13 +187,23 @@
     <div class="container fade-scale">
         <div id="myheader">
             <h1 class="title">
-                 
-                    James Xu
                 
             </h1>
             <h5 class="subtitle">
                 
-                    只要用心，人人都是(shi)大神！
+                    <h1 id="pagetitle" class="archivestitle"></h1>
+                    <script>
+                        if(location.href.indexOf('about')!=-1){
+                            pagetitle.textContent = '主人很懒，没有留下什么东西！';
+                        }else if(location.href.indexOf('tags')!=-1||location.href.indexOf('categories')!=-1){
+                            var a=location.href.substring(location.href.length-5,location.href.length-1);
+                            if(a==='tags'){
+                                pagetitle.textContent = '左青龙，右白虎，老牛在腰间!';
+                            }else if(a==='ries'){
+                                pagetitle.textContent = '物以类聚，人以群分！';
+                            }
+                        }
+                    </script>
                 
             </h5>
         </div>
@@ -201,100 +211,28 @@
 
 </header>
 
-<div class="container body-wrap">
-    <ul class="post-list">
+<div class="container body-wrap fade">
     
-        <li class="post-list-item fade">
-            <article id="post-rem布局"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b202/">手机端页面自适应解决方案—rem布局进阶版</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-23 09:01:46" datetime="2018-03-23T01:01:46.678Z"  itemprop="datePublished">2018-03-23</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>好玩的rem布局</p>
-    
-        <div>
-            <a href="/posts/4a17b202/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rem布局/">rem布局</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-为什么喝碳酸饮料的人越来越少？"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b201/">为什么喝碳酸饮料的人越来越少？</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-23 08:43:11" datetime="2018-03-23T00:43:11.470Z"  itemprop="datePublished">2018-03-23</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>最近，某饮料巨头公布了2017年的成绩单。财报显示，无论是净收入还是净利润都出现了下滑。事实上，这并非饮料行业第一次出现糟糕局面。据统计，美国碳酸软饮料销量连续11年下跌。20世纪可以说是属于碳酸饮料的世纪，碳酸饮料风靡全球，甚至代表了一种文化。然而到了现在，碳酸饮料为什么不行了？</p>
-    
-        <div>
-            <a href="/posts/4a17b201/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/健康/">健康</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/饮料/">饮料</a></li></ul>
-
+        <h5 class="tag-tip">
+            <i class="icon icon-tag"></i>
+            关于
+            <span style="color:rgb(100, 100, 100)">电影</span>
+            共&nbsp;1&nbsp;篇文章</h5>
+        <div class="waterfall">
+            
+                <article class="archive-article" onclick="location.href='/posts/4a17b200/'">
+    <div class="archive-article-date">
+      
+      <time class="my-post-time">
+        <i class="icon icon-lg icon-file-text-o"></i>
+        &nbsp;
+          2018-03-22
+      </time>
     </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-炸裂的《复联3》预告里，唯独就少了他的影子"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
+    <div class="archive-article-inner">
+      
 
 
   
@@ -305,248 +243,17 @@
 
 
 
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-22 14:46:48" datetime="2018-03-22T06:46:48.866Z"  itemprop="datePublished">2018-03-22</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p><strong>《复仇者联盟3：无限战争》</strong>的首支预告在去年以24小时2.3亿的浏览量，创造了有史以来的最高纪录</p>
-    
-        <div>
-            <a href="/posts/4a17b200/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
-        
+      
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复联3/">复联3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漫威/">漫威</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/话题/">话题</a></li></ul>
 
     </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-前端常见跨域解决方案"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b157/">前端常见跨域解决方案</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-22 14:19:57" datetime="2018-03-22T06:19:57.576Z"  itemprop="datePublished">2018-03-22</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>学习下跨域</p>
-    
-        <div>
-            <a href="/posts/4a17b157/" class="post-more waves-button">
-                Continue reading...
-            </a>
+  </article>
+            
         </div>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postmessage/">postmessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-不重视睡眠，谈什么健康？"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b159/">不重视睡眠，谈什么健康？</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-22 14:19:57" datetime="2018-03-22T06:19:57.553Z"  itemprop="datePublished">2018-03-22</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>早睡早起精神好！</p>
-    
-        <div>
-            <a href="/posts/4a17b159/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/健康/">健康</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/睡眠/">睡眠</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-“月薪2万”为何招不到工人？"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b158/">“月薪2万”为何招不到工人？</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-22 14:19:57" datetime="2018-03-22T06:19:57.540Z"  itemprop="datePublished">2018-03-22</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>近几日，一篇题为《活久见！月薪2万！广州老板当街大排长龙任人选！90后却不愿干》的文章引发热议。说的是广州开春“招工难”，招工者多，应征者少，甚至有制衣厂老板开出月薪2万的报酬，居然还谈不拢。“月薪2万招不到工人”，这是怎么回事？“用工荒”的真相，到底是什么？</p>
-    
-        <div>
-            <a href="/posts/4a17b158/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/招工/">招工</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/社会/">社会</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/话题/">话题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高薪/">高薪</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-hello-world"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b156/">Hello World</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-22 11:58:27" datetime="2018-03-22T03:58:27.331Z"  itemprop="datePublished">2018-03-22</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-    
-        <div>
-            <a href="/posts/4a17b156/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-从输入url到页面展示到底发生了什么"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/posts/4a17b160/">从输入url到页面展示到底发生了什么</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-03-21 10:13:49" datetime="2018-03-21T02:13:49.000Z"  itemprop="datePublished">2018-03-21</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <p>浏览器解析url的过程</p>
-    
-        <div>
-            <a href="/posts/4a17b160/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器解析/">浏览器解析</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-    </ul>
-
     
 
 </div>
+
 
         <footer class="footer">
     <div class="footer-content">
