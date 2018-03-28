@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xumenghao.top/"/>
-  <updated>2018-03-28T01:19:30.330Z</updated>
+  <updated>2018-03-28T01:54:05.389Z</updated>
   <id>xumenghao.top/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rem布局</title>
+    <link href="xumenghao.top//posts/6caba2a4/"/>
+    <id>xumenghao.top//posts/6caba2a4/</id>
+    <published>2018-03-28T01:53:29.000Z</published>
+    <updated>2018-03-28T01:54:05.389Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="as" scheme="xumenghao.top/tags/as/"/>
+    
+      <category term="sdf" scheme="xumenghao.top/tags/sdf/"/>
+    
+  </entry>
   
   <entry>
     <title>手机端页面自适应解决方案—rem布局进阶版</title>
@@ -60,9 +78,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
-    
       <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
+    
+      <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
     
   </entry>
   
@@ -136,9 +154,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
-    
       <category term="睡眠" scheme="xumenghao.top/tags/%E7%9D%A1%E7%9C%A0/"/>
+    
+      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
     
   </entry>
   
