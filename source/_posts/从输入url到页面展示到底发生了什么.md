@@ -2,7 +2,7 @@
 title: 从输入url到页面展示到底发生了什么
 date: 2018-03-21 10:13:49
 abbrlink: 4a17b160
-tag: ['HTML','浏览器解析']
+tags: [HTML,浏览器解析]
 categories: 浏览器
 ---
 

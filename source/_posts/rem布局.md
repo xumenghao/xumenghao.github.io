@@ -1,7 +1,7 @@
 ---
 title: 手机端页面自适应解决方案—rem布局进阶版
 abbrlink: 4a17b202
-tag: ['rem布局','HTML5','前端']
+tags: [rem布局,HTML5,前端]
 categories: Web前端
 ---
 
