@@ -60,9 +60,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
-    
       <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
+    
+      <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
     
   </entry>
   
@@ -136,9 +136,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
-    
       <category term="睡眠" scheme="xumenghao.top/tags/%E7%9D%A1%E7%9C%A0/"/>
+    
+      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
     
   </entry>
   
