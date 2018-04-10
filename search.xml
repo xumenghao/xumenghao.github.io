@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>404 NOT FOUND!</title>
+      <link href="//posts/4a17b205/"/>
+      <url>//posts/4a17b205/</url>
+      <content type="html"><![CDATA[<p>抱歉，沒有找到您需要的文章！！</p><a id="more"></a><p><code>James Xu - 中南海保安发来报道</code></p><blockquote></blockquote><p>404页面是网站必备的一个页面，它承载着用户体验与SEO优化的重任。404页面通常为用户访问了网站上不存在或已删除的页面，服务器返回的404错误。如果站长没有设置404页面，会出现死链接，蜘蛛爬行这类网址时，不利于搜索引擎收录。  </p><h5 id="404-Not-Found-由来"><a href="#404-Not-Found-由来" class="headerlink" title="404 Not Found 由来"></a>404 Not Found 由来</h5><hr><p>据说在第三次科技革命之前，互联网的形态就是一个大型的中央数据库，这个数据库就设置在404房间里面。那时候所有的请求都是由人工手动完成的，如果在数据库中没有找到请求者所需要的文件，或者由于请求者写错了文件编号，用户就会得到一个返回信息：room 404 : file not found。后来互联网兴起后，人们也就习惯了用404作为服务器未找到文件的错误代码了。当然实际考证传说中的room 404是不存在的。  </p><h5 id="设置404页面的两大好处"><a href="#设置404页面的两大好处" class="headerlink" title="设置404页面的两大好处"></a>设置404页面的两大好处</h5><hr><ul><li>引导用户不要关闭网站，增强用户体验。</li><li>防止网站出现死链接。</li></ul><p><a href="https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/5053660?fr=aladdin" target="_blank" rel="noopener">查看更多 HTTP状态码介绍</a></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://www.runoob.com/wp-content/themes/runoob/assets/img/404.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+      
+      <categories>
+          
+          <category> 浏览器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTTP </tag>
+            
+            <tag> 浏览器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>饭后嚼两粒木糖醇，有用吗？</title>
       <link href="//posts/4a17b204/"/>
       <url>//posts/4a17b204/</url>
@@ -17,9 +40,9 @@
       
         <tags>
             
-            <tag> 健康 </tag>
-            
             <tag> 话题 </tag>
+            
+            <tag> 健康 </tag>
             
         </tags>
       
