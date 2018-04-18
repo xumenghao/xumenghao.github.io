@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xumenghao.top/"/>
-  <updated>2018-04-11T04:31:26.881Z</updated>
+  <updated>2018-04-18T08:58:44.468Z</updated>
   <id>xumenghao.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 骚操作</title>
+    <link href="xumenghao.top//posts/4a17b210/"/>
+    <id>xumenghao.top//posts/4a17b210/</id>
+    <published>2018-04-18T08:46:59.955Z</published>
+    <updated>2018-04-18T08:58:44.468Z</updated>
+    
+    <content type="html"><![CDATA[<p>我没房没车没钱，但是我骚啊！！！</p><a id="more"></a><p><code>James Xu - 中南海保安发来报道</code></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><hr><p>如有错误，欢迎批评指正！  </p><p>技术无极限，唯一的限制是你的想象力！  </p><p>在JavaScript世界中，有些操作会让你无法理解，但是却无比优雅。比如下面这些：  </p><p><img src="https://user-gold-cdn.xitu.io/2017/10/3/0b17e3e7381e0e2076f9509eebf18b0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p><h5 id="5种方式实现值交换"><a href="#5种方式实现值交换" class="headerlink" title="5种方式实现值交换"></a>5种方式实现值交换</h5><hr><p>下面几种方式都行</p><pre><code>1. var temp = a; a = b; b = temp; (传统，但需要借助临时变量)2. a ^= b; b ^= a; a ^= b; (需要两个整数)3. b = [a, a = b][0] (借助数组)4. [a, b] = [b, a]; (ES6，解构赋值)5. a = a + b; b = a - b; a = a - b; (小学奥赛题)</code></pre><h5 id="去掉小数部分"><a href="#去掉小数部分" class="headerlink" title="去掉小数部分"></a>去掉小数部分</h5><hr><p>下面几种方式都行</p><pre><code>parseInt(num)~~numnum &gt;&gt; 0num | 0</code></pre><h5 id="判断-x-是否是整数"><a href="#判断-x-是否是整数" class="headerlink" title="判断 x 是否是整数"></a>判断 x 是否是整数</h5><hr><p>下面几种方式都行</p><pre><code>function isInt(x) {    return (x ^ 0) === x}// return Math.round(x) === x// return (typeof x === &apos;number&apos;) &amp;&amp; (x % 1 === 0)// ES6 -&gt; Number.isInteger()</code></pre><h5 id="递归求阶乘"><a href="#递归求阶乘" class="headerlink" title="递归求阶乘"></a>递归求阶乘</h5><hr><pre><code>function factorial(n) {      return (n &gt; 1) ? n * f(n - 1) : n}</code></pre><h5 id="判断符号是否相同"><a href="#判断符号是否相同" class="headerlink" title="判断符号是否相同"></a>判断符号是否相同</h5><hr><pre><code>function sameSign(a, b) {      return (a ^ b) &gt;= 0}</code></pre><h5 id="克隆数组"><a href="#克隆数组" class="headerlink" title="克隆数组"></a>克隆数组</h5><hr><pre><code>arr.slice(0)</code></pre><h5 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h5><pre><code>// ES6Array.from(new Set(arr))// ES5arr.filter(function(ele, index, array){    return index===array.indexOf(ele)})</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我没房没车没钱，但是我骚啊！！！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="xumenghao.top/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="xumenghao.top/tags/JavaScript/"/>
+    
+      <category term="HTML" scheme="xumenghao.top/tags/HTML/"/>
+    
+  </entry>
   
   <entry>
     <title>赌王儿子何猷君：如何拥有自己的“开挂”人生！</title>
@@ -82,9 +106,9 @@
       <category term="话题" scheme="xumenghao.top/categories/%E8%AF%9D%E9%A2%98/"/>
     
     
-      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
-    
       <category term="话题" scheme="xumenghao.top/tags/%E8%AF%9D%E9%A2%98/"/>
+    
+      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
     
   </entry>
   
@@ -156,9 +180,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
-    
       <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
+    
+      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
     
   </entry>
   
@@ -232,9 +256,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="睡眠" scheme="xumenghao.top/tags/%E7%9D%A1%E7%9C%A0/"/>
-    
       <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
+    
+      <category term="睡眠" scheme="xumenghao.top/tags/%E7%9D%A1%E7%9C%A0/"/>
     
   </entry>
   
