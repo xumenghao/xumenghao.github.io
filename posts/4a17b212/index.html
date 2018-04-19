@@ -47,7 +47,7 @@
 <meta property="og:site_name" content="James Xu">
 <meta property="og:description" content="你知道JavaScript的原型链吗？">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/1/21/f14c4712bb49b68d48f601c078312b15.jpg?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-04-19T07:24:36.060Z">
+<meta property="og:updated_time" content="2018-04-19T07:51:21.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 原型链">
 <meta name="twitter:description" content="你知道JavaScript的原型链吗？">
@@ -248,12 +248,12 @@
             <p>你知道JavaScript的原型链吗？</p>
 <a id="more"></a>
 <p><code>James Xu - 中南海保安发来报道</code></p>
-<p>1.<a href="#result">结论</a><br>2.<a href="#find">细探</a><br>   1.<a href="#Protoexplain">原型链解释</a><br>   2.<a href="#Protoprinciple">原型链工作原理</a><br>3.<a href="#links">参考链接</a></p>
-<p>之前常听说 JavaScript 的面向对象是构建于原型链（protype chain）上的，通过逐级向上查找直至 Object 的原型为止，但是具体的工作机制不太清楚，今天查阅了资料，才发现原来自己之前把<code>__proto__</code>与 <code>prototype</code> 混为一谈了（冏o(╯□╰)o）。</p>
+<p>1.<a href="#result">结论</a><br>2.<a href="#find">细探</a><br>    1.<a href="#Protoexplain">原型链解释</a><br>    2.<a href="#Protoprinciple">原型链工作原理</a><br>3.<a href="#links">参考链接</a></p>
+<p>之前常听说 JavaScript 的面向对象是构建于原型链（protype chain）上的，通过逐级向上查找直至 Object 的原型为止，但是具体的工作机制不太清楚，今天查阅了资料，才发现原来自己之前把<code>__proto__</code>与 <code>prototype</code> 混为一谈了o(╯□╰)o。</p>
 <p></p><h4 id="result">结论</h4><p></p>
 <hr>
 <p>先抛出来结论：</p>
-<p><code>__proto__</code>是原型链查询中实际用到的，它总是指向 <code>prototype</code>；<br><code>prototype</code>在定义构造函数时自动创建，它总是被 <code>__proto__</code>所指。<br>从上面两点我们还可以推出 prototype <strong>只能作为构造函数的属性，而<code>__proto__</code>可以作为任意对象的属性</strong></p>
+<p><code>__proto__</code>是原型链查询中实际用到的，它总是指向 <code>prototype</code>；<br><code>prototype</code>在定义构造函数时自动创建，它总是被 <code>__proto__</code>所指。<br>从上面两点我们还可以推出<code>prototype</code><strong>只能作为构造函数的属性，而<code>__proto__</code>可以作为任意对象的属性</strong></p>
 <p></p><h4 id="find">细探</h4><p></p>
 <hr>
 <p>接下来通过一段代码具体的研究一下：</p>
@@ -275,7 +275,25 @@ let c = new Foo(30);
                 <div class="image-caption"></div>
             </figure>
 <p>看上去是不是有些晕？ 没关系，看完这篇文章就会觉得很简单了。</p>
-<h5 id="Protoexplain">原型链解释</h5><br>***<br><br>首先聚焦于图的中央，也就是蓝色和灰色的块。代码的第一行<code>function Foo(age) { ... }</code>; 定义了构造函数 Foo，此时 Foo 的原型便自动创建，它的 constructor 属性指向 Foo，Foo 的 prototype 属性指向刚刚创建的原型：<br><br>    Foo.prototype.constructor === Foo; // true<br><br>接着再看图的左部，也就是黄绿色的块。代码的第四、五行通过 <code>let b = new Foo(20); let c = new Foo(20);</code>创建了对象 b 和 c，每当我们通过<code>new Foo(x)</code>创建对象时，JavaScript 内部会首先创建一个新的对象，将其 <code>__proto__</code>属性指向 Foo 的原型，也就是 Foo.prototype，然后将构造函数中的 <code>this</code>指向刚刚创建的新对象，最后再执行构造函数中的代码：<br><br>    b.<strong>proto</strong> === Foo.prototype; // truec.<strong>proto</strong> === Foo.prototype; // true<br><br>最后来说说剩下的紫色的块。<br><br>既然原型链是一条链，那么它就一定会有起始点。文章的开头就说过原型链查找是逐级向上查找直至 Object 的原型为止，所以说起始点就是 <code>Object.prototype</code>，自然<code>Object.prototype.__proto__</code>的值为 null（因为已经到了链头，链结束了）。<br><br>尽管 Foo 是构造函数，但它仍逃不出函数的范畴，所以它的 <code>__proto__</code>指向函数的原型，也就是 Function.prototype。<br><br>一切原型链的终点都是<code>Object.prototype</code>，所以 <code>Foo.prototype.__proto__</code>和 <code>Function.prototype.__proto__</code>均指向它。<br><br>    Foo.<strong>proto</strong> === Function.prototype; // true<br>    Foo.prototype.<strong>proto</strong> === Object.prototype; //true<br>    Function.prototype.<strong>proto</strong> === Object.prototype; // true<br>    Object.prototype.<strong>proto</strong> === null; // true<br><br><h5 id="Protoprinciple">原型链工作原理</h5>
+<h5 id="Protoexplain">原型链解释</h5>
+
+
+<p>首先聚焦于图的中央，也就是蓝色和灰色的块。代码的第一行<code>function Foo(age) { ... }</code>; 定义了构造函数 Foo，此时 Foo 的原型便自动创建，它的 constructor 属性指向 Foo，Foo 的 prototype 属性指向刚刚创建的原型：</p>
+<blockquote>
+<p>   Foo.prototype.constructor === Foo; // true</p>
+</blockquote>
+<p>接着再看图的左部，也就是黄绿色的块。代码的第四、五行通过 <code>let b = new Foo(20); let c = new Foo(20);</code>创建了对象 b 和 c，每当我们通过<code>new Foo(x)</code>创建对象时，JavaScript 内部会首先创建一个新的对象，将其 <code>__proto__</code>属性指向 Foo 的原型，也就是 Foo.prototype，然后将构造函数中的 <code>this</code>指向刚刚创建的新对象，最后再执行构造函数中的代码：</p>
+<blockquote>
+<p>   b.<strong>proto</strong> === Foo.prototype; // truec.<strong>proto</strong> === Foo.prototype; // true</p>
+</blockquote>
+<p>最后来说说剩下的紫色的块。</p>
+<p>既然原型链是一条链，那么它就一定会有起始点。文章的开头就说过原型链查找是逐级向上查找直至 Object 的原型为止，所以说起始点就是 <code>Object.prototype</code>，自然<code>Object.prototype.__proto__</code>的值为 null（因为已经到了链头，链结束了）。</p>
+<p>尽管 Foo 是构造函数，但它仍逃不出函数的范畴，所以它的 <code>__proto__</code>指向函数的原型，也就是 Function.prototype。</p>
+<p>一切原型链的终点都是<code>Object.prototype</code>，所以 <code>Foo.prototype.__proto__</code>和 <code>Function.prototype.__proto__</code>均指向它。</p>
+<blockquote>
+<p>   Foo.<strong>proto</strong> === Function.prototype; // true<br>   Foo.prototype.<strong>proto</strong> === Object.prototype; //true<br>   Function.prototype.<strong>proto</strong> === Object.prototype; // true<br>   Object.prototype.<strong>proto</strong> === null; // true</p>
+</blockquote>
+<h5 id="Protoprinciple">原型链工作原理</h5>
 
 <p>一句话解释就是：<strong>原型链查找就是通过 proto 查找，查找至值为 null （也就是 Object.prototype）时结束</strong>，通过几个具体的例子来说明一下：</p>
 <ul>
@@ -294,7 +312,7 @@ let c = new Foo(30);
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-04-19T07:24:36.060Z" itemprop="dateUpdated">2018-04-19 15:24:36</time>
+    Last updated: <time datetime="2018-04-19T07:51:21.946Z" itemprop="dateUpdated">2018-04-19 15:51:21</time>
 </span>
 
 
