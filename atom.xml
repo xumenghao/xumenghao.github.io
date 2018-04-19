@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xumenghao.top/"/>
-  <updated>2018-04-19T03:47:22.870Z</updated>
+  <updated>2018-04-19T07:24:36.060Z</updated>
   <id>xumenghao.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 原型链</title>
+    <link href="xumenghao.top//posts/4a17b212/"/>
+    <id>xumenghao.top//posts/4a17b212/</id>
+    <published>2018-04-19T07:02:05.380Z</published>
+    <updated>2018-04-19T07:24:36.060Z</updated>
+    
+    <content type="html"><![CDATA[<p>你知道JavaScript的原型链吗？</p><a id="more"></a><p><code>James Xu - 中南海保安发来报道</code></p><p>1.<a href="#result">结论</a><br>2.<a href="#find">细探</a><br>   1.<a href="#Protoexplain">原型链解释</a><br>   2.<a href="#Protoprinciple">原型链工作原理</a><br>3.<a href="#links">参考链接</a></p><p>之前常听说 JavaScript 的面向对象是构建于原型链（protype chain）上的，通过逐级向上查找直至 Object 的原型为止，但是具体的工作机制不太清楚，今天查阅了资料，才发现原来自己之前把<code>__proto__</code>与 <code>prototype</code> 混为一谈了（冏o(╯□╰)o）。</p><p></p><h4 id="result">结论</h4><p></p><hr><p>先抛出来结论：</p><p><code>__proto__</code>是原型链查询中实际用到的，它总是指向 <code>prototype</code>；<br><code>prototype</code>在定义构造函数时自动创建，它总是被 <code>__proto__</code>所指。<br>从上面两点我们还可以推出 prototype <strong>只能作为构造函数的属性，而<code>__proto__</code>可以作为任意对象的属性</strong></p><p></p><h4 id="find">细探</h4><p></p><hr><p>接下来通过一段代码具体的研究一下：</p><pre><code>function Foo(y) {    this.y = y; };Foo.prototype.x = 10;FOo.prototype.calculate = function () {    ... };let b = new Foo(20);let c = new Foo(30);</code></pre><p>这段代码构建的原型链可以用下面的图来表示：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-gold-cdn.xitu.io/2017/1/21/f14c4712bb49b68d48f601c078312b15.jpg?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>看上去是不是有些晕？ 没关系，看完这篇文章就会觉得很简单了。</p><h5 id="Protoexplain">原型链解释</h5><br>***<br><br>首先聚焦于图的中央，也就是蓝色和灰色的块。代码的第一行<code>function Foo(age) { ... }</code>; 定义了构造函数 Foo，此时 Foo 的原型便自动创建，它的 constructor 属性指向 Foo，Foo 的 prototype 属性指向刚刚创建的原型：<br><br>    Foo.prototype.constructor === Foo; // true<br><br>接着再看图的左部，也就是黄绿色的块。代码的第四、五行通过 <code>let b = new Foo(20); let c = new Foo(20);</code>创建了对象 b 和 c，每当我们通过<code>new Foo(x)</code>创建对象时，JavaScript 内部会首先创建一个新的对象，将其 <code>__proto__</code>属性指向 Foo 的原型，也就是 Foo.prototype，然后将构造函数中的 <code>this</code>指向刚刚创建的新对象，最后再执行构造函数中的代码：<br><br>    b.<strong>proto</strong> === Foo.prototype; // truec.<strong>proto</strong> === Foo.prototype; // true<br><br>最后来说说剩下的紫色的块。<br><br>既然原型链是一条链，那么它就一定会有起始点。文章的开头就说过原型链查找是逐级向上查找直至 Object 的原型为止，所以说起始点就是 <code>Object.prototype</code>，自然<code>Object.prototype.__proto__</code>的值为 null（因为已经到了链头，链结束了）。<br><br>尽管 Foo 是构造函数，但它仍逃不出函数的范畴，所以它的 <code>__proto__</code>指向函数的原型，也就是 Function.prototype。<br><br>一切原型链的终点都是<code>Object.prototype</code>，所以 <code>Foo.prototype.__proto__</code>和 <code>Function.prototype.__proto__</code>均指向它。<br><br>    Foo.<strong>proto</strong> === Function.prototype; // true<br>    Foo.prototype.<strong>proto</strong> === Object.prototype; //true<br>    Function.prototype.<strong>proto</strong> === Object.prototype; // true<br>    Object.prototype.<strong>proto</strong> === null; // true<br><br><h5 id="Protoprinciple">原型链工作原理</h5><p>一句话解释就是：<strong>原型链查找就是通过 proto 查找，查找至值为 null （也就是 Object.prototype）时结束</strong>，通过几个具体的例子来说明一下：</p><ul><li><code>b.y</code>在 b 中找到 y，结果为 20；  </li><li><code>b.x</code>在 b 中未找到 x，接着通过 b.<strong>proto</strong> 在 Foo.prototype 中找到 x，结果为 10；  </li><li><code>b.toString()</code>在 b 中未找到 toString 方法；接着通过 b.<strong>proto</strong> 在 Foo.prototype 中寻找，未找到；继续通过 Foo.prototype.<strong>proto</strong> 在 Object.prototype 中寻找，找到，结果为 ‘[object Object]’。  </li><li><code>b.noFunc()</code>依次在 b、Foo.prototype、Object.prototype 中寻找，均未L找到，抛出错误。  </li></ul><p></p><h4 id="links">参考链接</h4><p></p><hr><p>1.<a href="https://link.juejin.im?target=http%3A%2F%2Fstackoverflow.com%2Fquestions%2F9959727%2Fproto-vs-prototype-in-javascript" target="_blank" rel="noopener">StackOverflow - <strong>proto</strong> vs prototype</a>。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;你知道JavaScript的原型链吗？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="xumenghao.top/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="xumenghao.top/tags/JavaScript/"/>
+    
+      <category term="前端" scheme="xumenghao.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 闭包</title>
@@ -204,9 +228,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
-    
       <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
+    
+      <category term="饮料" scheme="xumenghao.top/tags/%E9%A5%AE%E6%96%99/"/>
     
   </entry>
   
@@ -280,9 +304,9 @@
       <category term="健康" scheme="xumenghao.top/categories/%E5%81%A5%E5%BA%B7/"/>
     
     
-      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
-    
       <category term="睡眠" scheme="xumenghao.top/tags/%E7%9D%A1%E7%9C%A0/"/>
+    
+      <category term="健康" scheme="xumenghao.top/tags/%E5%81%A5%E5%BA%B7/"/>
     
   </entry>
   
@@ -350,9 +374,9 @@
       <category term="浏览器" scheme="xumenghao.top/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
     
-      <category term="浏览器" scheme="xumenghao.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
       <category term="前端" scheme="xumenghao.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="浏览器" scheme="xumenghao.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
     
     
     
-    <title>JavaScript 闭包 | James Xu</title>
+    <title>JavaScript 原型链 | James Xu</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,17 +39,19 @@
 
 
     
-    <meta name="description" content="大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！">
+    <meta name="description" content="你知道JavaScript的原型链吗？">
 <meta name="keywords" content="JavaScript,前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 闭包">
-<meta property="og:url" content="xumenghao.top/posts/4a17b211/index.html">
+<meta property="og:title" content="JavaScript 原型链">
+<meta property="og:url" content="xumenghao.top/posts/4a17b212/index.html">
 <meta property="og:site_name" content="James Xu">
-<meta property="og:description" content="大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！">
-<meta property="og:updated_time" content="2018-04-19T03:47:22.870Z">
+<meta property="og:description" content="你知道JavaScript的原型链吗？">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/1/21/f14c4712bb49b68d48f601c078312b15.jpg?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-04-19T07:24:36.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 闭包">
-<meta name="twitter:description" content="大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！">
+<meta name="twitter:title" content="JavaScript 原型链">
+<meta name="twitter:description" content="你知道JavaScript的原型链吗？">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/1/21/f14c4712bb49b68d48f601c078312b15.jpg?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
     
         <link rel="alternate" type="application/atom+xml" title="James Xu" href="/atom.xml">
     
@@ -168,7 +170,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">JavaScript 闭包</div>
+        <div class="flex-col header-title ellipsis">JavaScript 原型链</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -210,19 +212,19 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、什么是闭包？"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、什么是闭包？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、变量的作用域"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、变量的作用域</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、使用闭包的注意点"><span class="post-toc-number">3.</span> <span class="post-toc-text">3、使用闭包的注意点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4、闭包的用途"><span class="post-toc-number">4.</span> <span class="post-toc-text">4、闭包的用途</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5、结语"><span class="post-toc-number">5.</span> <span class="post-toc-text">5、结语</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#result"><span class="post-toc-number">1.</span> <span class="post-toc-text">结论</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#find"><span class="post-toc-number">2.</span> <span class="post-toc-text">细探</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Protoexplain"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">原型链解释</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Protoprinciple"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">原型链工作原理</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#links"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考链接</span></a></li></ol>
         </nav>
     </aside>
    
-<article id="post-JavaScript 闭包"
+<article id="post-JavaScript 原型链"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">JavaScript 闭包</h1>
+        <h1 class="post-card-title">JavaScript 原型链</h1>
         <div class="post-meta">
             <i class="icon icon-lg icon-calendar-o"></i>
             发表于
-            <time class="post-time" title="2018-04-19 11:21:52" datetime="2018-04-19T03:21:52.573Z"  itemprop="datePublished">2018-04-19</time>
+            <time class="post-time" title="2018-04-19 15:02:05" datetime="2018-04-19T07:02:05.380Z"  itemprop="datePublished">2018-04-19</time>
 
             <br id="mybreak"/>
             
@@ -240,138 +242,51 @@
         </div>
         <div class="post-count-custom">
             <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">7</span>&nbsp;分钟
+            阅读本文可能花费您&nbsp;<span class="post-count">3</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！</p>
+            <p>你知道JavaScript的原型链吗？</p>
 <a id="more"></a>
 <p><code>James Xu - 中南海保安发来报道</code></p>
-<h4 id="1、什么是闭包？"><a href="#1、什么是闭包？" class="headerlink" title="1、什么是闭包？"></a>1、什么是闭包？</h4><p>JavaScript的闭包是一个特色。官方解释是：闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。这句话相信有许多人看不懂。我来表述一下我对JavaScript闭包的理解：  </p>
-<p>闭包的例子：</p>
-<pre><code>var count=10;//全局作用域 标记为flag1
-function add(){
-    var count=0;//函数全局作用域 标记为flag2
-    return function(){
-        count+=1;//函数的内部作用域
-        alert(count);
-    }
-}
-var s=add()
-s();//输出1
-s();//输出2
-</code></pre><p>add()的返回值是一个函数，首先第一次调用s()的时候，是执行add()的返回的函数，也就是下面这个函数：</p>
-<pre><code>function(){
-    count+=1;//函数的内部作用域
-    alert(count);
-}
-</code></pre><p>也就是将count+1，在输出，那count是从哪儿来的的呢，根据作用域链的规则，底层作用域没有声明的变量，会向上一级找，找到就返回，没找到就一直找，直到window的变量，没有就返回undefined。这里明显count 是函数内部的flag2 的那个count ，</p>
-<p>var count=10;//全局作用域<br>function add(){<br>    //var count=0;注释掉了<br>    return function(){<br>        count+=1;//函数的内部作用域<br>        alert(count);<br>    }<br>}</p>
-<pre><code>var s=add()
-s();//输出11
-s();//输出12
-</code></pre><p>自然这是体现不出闭包的性质，只为了说明函数作用域链 继续说明：第一次执行，是没有疑问的输出1，那第二次的过程是怎样的呢？ 继续执行那个函数的返回的方法，还是count+=1;然后再输出count ，这里问题就来了，不应该继续向上寻找，找到count=0；然后输出1吗？不知道有没有注意一个问题，那就是s()执行的是下面这个函数</p>
-<pre><code>function(){
-    count+=1;//函数的内部作用域
-    alert(count);
-}
-</code></pre><p>也就是说add()，只被执行了一次。然后执行两次s()，那count的值就是只声明了一次。</p>
-<p>var s=add()，函数add 只在这里执行了一次。</p>
-<p>下面执行的都是s()，那第二次的count的值是从哪儿来的，没错它还是第一次执行add时，留下来的那个变量。</p>
-<p>（这怎么可能，函数变量执行完就会被释放啊，为什么还在？这里就是一个垃圾回收机制的引用计数问题）。</p>
-<p>“”如果一个变量的引用不为0，那么他不会被垃圾回收机制回收，引用，就是被调用“”。</p>
-<p>由于再次执行s()的时候，再次引用了第一次add()产生的变量count ，所以count没有被释放，第一次s(),count 的值为1,第二次执行s()，count的值再加1，自然就是2了。</p>
-<p>让我们返回来再看看，根据以上所说，如果执行两次add() ，那就应该输出 都是1，来改一下这个函数</p>
-<pre><code>function add(){
-    var count=0;//函数全局作用域
-    return function(){
-        count+=1;//函数的内部作用域
-        alert(count);
-    }
-}
-add()();//输出1
-add()();//输出1
-</code></pre><p>果真如此。输出的两次都是1. </p>
-<p>另外，我觉得阮一峰说的闭包也是很简洁的：“我的理解是，闭包就是能够读取其他函数内部变量的函数。”</p>
-<h4 id="2、变量的作用域"><a href="#2、变量的作用域" class="headerlink" title="2、变量的作用域"></a>2、变量的作用域</h4><p>要理解闭包，首先必须理解Javascript特殊的变量作用域。</p>
-<p>变量的作用域无非就是两种：全局变量和局部变量。</p>
-<p>Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量。</p>
-<p>Js代码</p>
-<blockquote>
-<p>   var n=999;</p>
-<p>   function f1(){<br>       alert(n);<br>   }</p>
-<p>   f1(); // 999</p>
-</blockquote>
-<p>另一方面，在函数外部自然无法读取函数内的局部变量。</p>
-<p>Js代码</p>
-<blockquote>
-<p>   function f1(){<br>   var n=999;<br>   }</p>
-<p>   alert(n); // error</p>
-</blockquote>
-<p>这里有一个地方需要注意，函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！</p>
-<p>Js代码</p>
-<blockquote>
-<p>   function f1(){<br>       n=999;<br>   }</p>
-<p>   f1();</p>
-<p>   alert(n); // 999   </p>
-</blockquote>
-<p>有时候需要得到函数内的局部变量，在函数的内部，再定义一个函数。</p>
-<p>Js代码</p>
-<blockquote>
-<p>   function f1(){</p>
-<pre><code>n=999;
+<p>1.<a href="#result">结论</a><br>2.<a href="#find">细探</a><br>   1.<a href="#Protoexplain">原型链解释</a><br>   2.<a href="#Protoprinciple">原型链工作原理</a><br>3.<a href="#links">参考链接</a></p>
+<p>之前常听说 JavaScript 的面向对象是构建于原型链（protype chain）上的，通过逐级向上查找直至 Object 的原型为止，但是具体的工作机制不太清楚，今天查阅了资料，才发现原来自己之前把<code>__proto__</code>与 <code>prototype</code> 混为一谈了（冏o(╯□╰)o）。</p>
+<p></p><h4 id="result">结论</h4><p></p>
+<hr>
+<p>先抛出来结论：</p>
+<p><code>__proto__</code>是原型链查询中实际用到的，它总是指向 <code>prototype</code>；<br><code>prototype</code>在定义构造函数时自动创建，它总是被 <code>__proto__</code>所指。<br>从上面两点我们还可以推出 prototype <strong>只能作为构造函数的属性，而<code>__proto__</code>可以作为任意对象的属性</strong></p>
+<p></p><h4 id="find">细探</h4><p></p>
+<hr>
+<p>接下来通过一段代码具体的研究一下：</p>
+<pre><code>function Foo(y) {
+    this.y = y; 
+};
+Foo.prototype.x = 10;
+FOo.prototype.calculate = function () {
+    ... 
+};
+let b = new Foo(20);
+let c = new Foo(30);
+</code></pre><p>这段代码构建的原型链可以用下面的图来表示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://user-gold-cdn.xitu.io/2017/1/21/f14c4712bb49b68d48f601c078312b15.jpg?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>看上去是不是有些晕？ 没关系，看完这篇文章就会觉得很简单了。</p>
+<h5 id="Protoexplain">原型链解释</h5><br>***<br><br>首先聚焦于图的中央，也就是蓝色和灰色的块。代码的第一行<code>function Foo(age) { ... }</code>; 定义了构造函数 Foo，此时 Foo 的原型便自动创建，它的 constructor 属性指向 Foo，Foo 的 prototype 属性指向刚刚创建的原型：<br><br>    Foo.prototype.constructor === Foo; // true<br><br>接着再看图的左部，也就是黄绿色的块。代码的第四、五行通过 <code>let b = new Foo(20); let c = new Foo(20);</code>创建了对象 b 和 c，每当我们通过<code>new Foo(x)</code>创建对象时，JavaScript 内部会首先创建一个新的对象，将其 <code>__proto__</code>属性指向 Foo 的原型，也就是 Foo.prototype，然后将构造函数中的 <code>this</code>指向刚刚创建的新对象，最后再执行构造函数中的代码：<br><br>    b.<strong>proto</strong> === Foo.prototype; // truec.<strong>proto</strong> === Foo.prototype; // true<br><br>最后来说说剩下的紫色的块。<br><br>既然原型链是一条链，那么它就一定会有起始点。文章的开头就说过原型链查找是逐级向上查找直至 Object 的原型为止，所以说起始点就是 <code>Object.prototype</code>，自然<code>Object.prototype.__proto__</code>的值为 null（因为已经到了链头，链结束了）。<br><br>尽管 Foo 是构造函数，但它仍逃不出函数的范畴，所以它的 <code>__proto__</code>指向函数的原型，也就是 Function.prototype。<br><br>一切原型链的终点都是<code>Object.prototype</code>，所以 <code>Foo.prototype.__proto__</code>和 <code>Function.prototype.__proto__</code>均指向它。<br><br>    Foo.<strong>proto</strong> === Function.prototype; // true<br>    Foo.prototype.<strong>proto</strong> === Object.prototype; //true<br>    Function.prototype.<strong>proto</strong> === Object.prototype; // true<br>    Object.prototype.<strong>proto</strong> === null; // true<br><br><h5 id="Protoprinciple">原型链工作原理</h5>
 
-function f2(){
-    alert(n); // 999
-}
-</code></pre><p>   }</p>
-</blockquote>
-<p>在上面的代码中，函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。但是反过来就不行，f2内部的局部变量，对f1 就是不可见的。这就是Javascript语言特有的“链式作用域”结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。</p>
-<p>既然f2可以读取f1中的局部变量，那么只要把f2作为返回值就可以在f1外部读取它的内部变量了。</p>
-<p>Js代码</p>
-<pre><code>function f1(){
-
-    n=999;
-
-    function f2(){
-        alert(n);
-    }
-
-    return f2;
-}
-
-var result=f1();
-
-result(); // 999
-</code></pre><h4 id="3、使用闭包的注意点"><a href="#3、使用闭包的注意点" class="headerlink" title="3、使用闭包的注意点"></a>3、使用闭包的注意点</h4><p>1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。  </p>
-<p>2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。  </p>
-<h4 id="4、闭包的用途"><a href="#4、闭包的用途" class="headerlink" title="4、闭包的用途"></a>4、闭包的用途</h4><p>闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
-<p>怎么来理解这句话呢？请看下面的代码。</p>
-<p>Js代码</p>
-<pre><code>function f1(){
-
-    var n=999;
-
-    nAdd=function(){n+=1}
-
-    function f2(){
-        alert(n);
-    }
-
-    return f2;
-
-}
-
-var result=f1();
-
-result(); // 999
-
-nAdd();
-
-result(); // 1000
-</code></pre><p>在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在f1调用后被自动清除。  </p>
-<p>为什么会这样呢？原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。  </p>
-<p>这段代码中另一个值得注意的地方，就是“nAdd=function(){n+=1}”这一行，首先在nAdd前面没有使用var关键字，因此 nAdd是一个全局变量，而不是局部变量。其次，nAdd的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以nAdd相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。  </p>
-<h4 id="5、结语"><a href="#5、结语" class="headerlink" title="5、结语"></a>5、结语</h4><p>理解JavaScript的闭包是迈向高级JS程序员的必经之路，理解了其解释和运行机制才能写出更为安全和优雅的代码。</p>
+<p>一句话解释就是：<strong>原型链查找就是通过 proto 查找，查找至值为 null （也就是 Object.prototype）时结束</strong>，通过几个具体的例子来说明一下：</p>
+<ul>
+<li><code>b.y</code>在 b 中找到 y，结果为 20；  </li>
+<li><code>b.x</code>在 b 中未找到 x，接着通过 b.<strong>proto</strong> 在 Foo.prototype 中找到 x，结果为 10；  </li>
+<li><code>b.toString()</code>在 b 中未找到 toString 方法；接着通过 b.<strong>proto</strong> 在 Foo.prototype 中寻找，未找到；继续通过 Foo.prototype.<strong>proto</strong> 在 Object.prototype 中寻找，找到，结果为 ‘[object Object]’。  </li>
+<li><code>b.noFunc()</code>依次在 b、Foo.prototype、Object.prototype 中寻找，均未L找到，抛出错误。  </li>
+</ul>
+<p></p><h4 id="links">参考链接</h4><p></p>
+<hr>
+<p>1.<a href="https://link.juejin.im?target=http%3A%2F%2Fstackoverflow.com%2Fquestions%2F9959727%2Fproto-vs-prototype-in-javascript" target="_blank" rel="noopener">StackOverflow - <strong>proto</strong> vs prototype</a>。</p>
 
         </div>
 
@@ -379,12 +294,12 @@ result(); // 1000
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-04-19T03:47:22.870Z" itemprop="dateUpdated">2018-04-19 11:47:22</time>
+    Last updated: <time datetime="2018-04-19T07:24:36.060Z" itemprop="dateUpdated">2018-04-19 15:24:36</time>
 </span>
 
 
         
-        原文链接：<a href="/posts/4a17b211/" target="_blank" rel="external">xumenghao.top/posts/4a17b211/</a>
+        原文链接：<a href="/posts/4a17b212/" target="_blank" rel="external">xumenghao.top/posts/4a17b212/</a>
         
     </div>
     <footer>
@@ -416,7 +331,7 @@ result(); // 1000
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=xumenghao.top/posts/4a17b211/&title=《JavaScript 闭包》 — James Xu&pic=xumenghao.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=xumenghao.top/posts/4a17b212/&title=《JavaScript 原型链》 — James Xu&pic=xumenghao.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -426,22 +341,22 @@ result(); // 1000
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=xumenghao.top/posts/4a17b211/&title=《JavaScript 闭包》 — James Xu&source=大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=xumenghao.top/posts/4a17b212/&title=《JavaScript 原型链》 — James Xu&source=你知道JavaScript的原型链吗？" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=xumenghao.top/posts/4a17b211/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=xumenghao.top/posts/4a17b212/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 闭包》 — James Xu&url=xumenghao.top/posts/4a17b211/&via=xumenghao.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 原型链》 — James Xu&url=xumenghao.top/posts/4a17b212/&via=xumenghao.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=xumenghao.top/posts/4a17b211/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=xumenghao.top/posts/4a17b212/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -461,21 +376,13 @@ result(); // 1000
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/posts/4a17b212/" id="post-prev" class="post-nav-link">
-        <h4 class="title" >
-          上一篇：JavaScript 原型链
-        </h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/posts/4a17b210/" id="post-next" class="post-nav-link">
-        <h4 class="title" data-hover="下一篇：JavaScript 骚操作">下一篇：JavaScript 骚操作</h4>
+      <a href="/posts/4a17b211/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：JavaScript 闭包">下一篇：JavaScript 闭包</h4>
       </a>
     </div>
   
@@ -574,7 +481,7 @@ result(); // 1000
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=xumenghao.top/posts/4a17b211/&title=《JavaScript 闭包》 — James Xu&pic=xumenghao.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=xumenghao.top/posts/4a17b212/&title=《JavaScript 原型链》 — James Xu&pic=xumenghao.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -584,22 +491,22 @@ result(); // 1000
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=xumenghao.top/posts/4a17b211/&title=《JavaScript 闭包》 — James Xu&source=大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=xumenghao.top/posts/4a17b212/&title=《JavaScript 原型链》 — James Xu&source=你知道JavaScript的原型链吗？" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=xumenghao.top/posts/4a17b211/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=xumenghao.top/posts/4a17b212/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 闭包》 — James Xu&url=xumenghao.top/posts/4a17b211/&via=xumenghao.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 原型链》 — James Xu&url=xumenghao.top/posts/4a17b212/&via=xumenghao.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=xumenghao.top/posts/4a17b211/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=xumenghao.top/posts/4a17b212/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -610,7 +517,7 @@ result(); // 1000
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p class="wechatshare">扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABu0lEQVR42u3aQY6DMAwF0N7/0swBKuDbJhkqvaxQlYRHF1Zi+/OJx3E5vuecrb2e+djAxcUdcyeUZIfvfc6er9fi4uLu554henOqlGR/XFzcN3PzcJbPwcXF/XVusjb5AFxc3PdzJ0eQJMGRX64eu6vh4uIOuHmWct3zkvwuLi5ui3sUx1MJkebbcXFxt3DzgPLUJ1UDGS4u7n5u3jyRv/56h/zKdJO/wcXF/SduNRVSDW3V4xEuLu5ObtI+NSma5gELFxf3bdxem0UewpKzyk0wxcXF3c6dBLJq+8WodIqLi7uYm4SnahplRbH2pmcEFxd3MXdeAslTqL0giIuLu5o7ud4kx51e2fX0F1xc3C3cXptFr3ySfEw12OHi4q7jVpMXSbrzes88RJ72keHi4m7kTkJboVw6SJTg4uLu5CaXliSdOim9RHNwcXEXc4/iqJZIqxenQsTFxcVdxp03alQLq9XiTe+NuLi4c24veFWbuqpHIlxc3Ddwe01UkyJrtXkLFxf3V7iT01Pv6oWLi/t+bn5Nygsq5VIKLi7uMu68bSJfWyXi4uLu51aTntV0RtRuFfwpuLi4W7h/AKqQn7n0a1QAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQW7DMAwEwPz/0+61h9pekpZiFKNTkBjW5EJIS34+8Tp+rbPvk2eu3/bYwsXFHXOPy3X2zOQ9Z5+TP4+Li7uTe7b99TPXpar3N25suLi4r+Q2C9BlQcTFxf0f3OQCk1yKcHFx38ztHUHmacbCuxouLu6Am2+27vOSfBcXF7fFPYor2TIpT83dcXFxt3DzgpJHogl9si8uLu5q7lMb5PFHPn4R5Te4uLgLuMlBJN84H9IaxbK4uLgbudWCUh266gUuuLi4+7mTKCSPPxJi1MLBxcXdwp0MWq0Yw2p2dXBxcR/lVkOQXsAxb9b+EZji4uJu5+YHmsJmrcAUFxd3P7d6ZMmL1KRVk/xhXFzc1dz86pIcgKrfF+ZEcHFxt3Org1a9VmsStt6gcXFxN3Lzq0s1Es0HMqI2LS4u7kbu/FrSG+0qP4OLi7uYexRX3nSpHl/KJQwXF3cZtxqGPvvS/EhUfj8uLu6Ymxev6nxUb2zr5ldcXNyN3N4QVTVgrV5+yp0fXFzcL3HLbdE4bE1KKi4u7ju5k6NPr+Th4uJ+izsfm6hegXoNV1xc3D3cXriZ0AvjVsURMVxc3GXcH63XkJ95eg3AAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
