@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>JavaScript 闭包</title>
+      <link href="//posts/4a17b211/"/>
+      <url>//posts/4a17b211/</url>
+      <content type="html"><![CDATA[<p>大家好，我是闭包，不是B-Boy（舞者），也不是B-Box（口技）！</p><a id="more"></a><p><code>James Xu - 中南海保安发来报道</code></p><h4 id="1、什么是闭包？"><a href="#1、什么是闭包？" class="headerlink" title="1、什么是闭包？"></a>1、什么是闭包？</h4><p>JavaScript的闭包是一个特色。官方解释是：闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。这句话相信有许多人看不懂。我来表述一下我对JavaScript闭包的理解：  </p><p>闭包的例子：</p><pre><code>var count=10;//全局作用域 标记为flag1function add(){    var count=0;//函数全局作用域 标记为flag2    return function(){        count+=1;//函数的内部作用域        alert(count);    }}var s=add()s();//输出1s();//输出2</code></pre><p>add()的返回值是一个函数，首先第一次调用s()的时候，是执行add()的返回的函数，也就是下面这个函数：</p><pre><code>function(){    count+=1;//函数的内部作用域    alert(count);}</code></pre><p>也就是将count+1，在输出，那count是从哪儿来的的呢，根据作用域链的规则，底层作用域没有声明的变量，会向上一级找，找到就返回，没找到就一直找，直到window的变量，没有就返回undefined。这里明显count 是函数内部的flag2 的那个count ，</p><p>var count=10;//全局作用域<br>function add(){<br>    //var count=0;注释掉了<br>    return function(){<br>        count+=1;//函数的内部作用域<br>        alert(count);<br>    }<br>}</p><pre><code>var s=add()s();//输出11s();//输出12</code></pre><p>自然这是体现不出闭包的性质，只为了说明函数作用域链 继续说明：第一次执行，是没有疑问的输出1，那第二次的过程是怎样的呢？ 继续执行那个函数的返回的方法，还是count+=1;然后再输出count ，这里问题就来了，不应该继续向上寻找，找到count=0；然后输出1吗？不知道有没有注意一个问题，那就是s()执行的是下面这个函数</p><pre><code>function(){    count+=1;//函数的内部作用域    alert(count);}</code></pre><p>也就是说add()，只被执行了一次。然后执行两次s()，那count的值就是只声明了一次。</p><p>var s=add()，函数add 只在这里执行了一次。</p><p>下面执行的都是s()，那第二次的count的值是从哪儿来的，没错它还是第一次执行add时，留下来的那个变量。</p><p>（这怎么可能，函数变量执行完就会被释放啊，为什么还在？这里就是一个垃圾回收机制的引用计数问题）。</p><p>“”如果一个变量的引用不为0，那么他不会被垃圾回收机制回收，引用，就是被调用“”。</p><p>由于再次执行s()的时候，再次引用了第一次add()产生的变量count ，所以count没有被释放，第一次s(),count 的值为1,第二次执行s()，count的值再加1，自然就是2了。</p><p>让我们返回来再看看，根据以上所说，如果执行两次add() ，那就应该输出 都是1，来改一下这个函数</p><pre><code>function add(){    var count=0;//函数全局作用域    return function(){        count+=1;//函数的内部作用域        alert(count);    }}add()();//输出1add()();//输出1</code></pre><p>果真如此。输出的两次都是1. </p><p>另外，我觉得阮一峰说的闭包也是很简洁的：“我的理解是，闭包就是能够读取其他函数内部变量的函数。”</p><h4 id="2、变量的作用域"><a href="#2、变量的作用域" class="headerlink" title="2、变量的作用域"></a>2、变量的作用域</h4><p>要理解闭包，首先必须理解Javascript特殊的变量作用域。</p><p>变量的作用域无非就是两种：全局变量和局部变量。</p><p>Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量。</p><p>Js代码</p><blockquote><p>   var n=999;</p><p>   function f1(){<br>       alert(n);<br>   }</p><p>   f1(); // 999</p></blockquote><p>另一方面，在函数外部自然无法读取函数内的局部变量。</p><p>Js代码</p><blockquote><p>   function f1(){<br>   var n=999;<br>   }</p><p>   alert(n); // error</p></blockquote><p>这里有一个地方需要注意，函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！</p><p>Js代码</p><blockquote><p>   function f1(){<br>       n=999;<br>   }</p><p>   f1();</p><p>   alert(n); // 999   </p></blockquote><p>有时候需要得到函数内的局部变量，在函数的内部，再定义一个函数。</p><p>Js代码</p><blockquote><p>   function f1(){</p><pre><code>n=999;function f2(){    alert(n); // 999}</code></pre><p>   }</p></blockquote><p>在上面的代码中，函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。但是反过来就不行，f2内部的局部变量，对f1 就是不可见的。这就是Javascript语言特有的“链式作用域”结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。</p><p>既然f2可以读取f1中的局部变量，那么只要把f2作为返回值就可以在f1外部读取它的内部变量了。</p><p>Js代码</p><pre><code>function f1(){    n=999;    function f2(){        alert(n);    }    return f2;}var result=f1();result(); // 999</code></pre><h4 id="3、使用闭包的注意点"><a href="#3、使用闭包的注意点" class="headerlink" title="3、使用闭包的注意点"></a>3、使用闭包的注意点</h4><p>1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。  </p><p>2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。  </p><h4 id="4、闭包的用途"><a href="#4、闭包的用途" class="headerlink" title="4、闭包的用途"></a>4、闭包的用途</h4><p>闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p><p>怎么来理解这句话呢？请看下面的代码。</p><p>Js代码</p><pre><code>function f1(){    var n=999;    nAdd=function(){n+=1}    function f2(){        alert(n);    }    return f2;}var result=f1();result(); // 999nAdd();result(); // 1000</code></pre><p>在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在f1调用后被自动清除。  </p><p>为什么会这样呢？原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。  </p><p>这段代码中另一个值得注意的地方，就是“nAdd=function(){n+=1}”这一行，首先在nAdd前面没有使用var关键字，因此 nAdd是一个全局变量，而不是局部变量。其次，nAdd的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以nAdd相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。  </p><h4 id="5、结语"><a href="#5、结语" class="headerlink" title="5、结语"></a>5、结语</h4><p>理解JavaScript的闭包是迈向高级JS程序员的必经之路，理解了其解释和运行机制才能写出更为安全和优雅的代码。</p>]]></content>
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>JavaScript 骚操作</title>
       <link href="//posts/4a17b210/"/>
       <url>//posts/4a17b210/</url>
@@ -19,7 +42,7 @@
             
             <tag> JavaScript </tag>
             
-            <tag> HTML </tag>
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -132,11 +155,11 @@
       
         <tags>
             
+            <tag> 前端 </tag>
+            
             <tag> rem布局 </tag>
             
             <tag> HTML5 </tag>
-            
-            <tag> 前端 </tag>
             
         </tags>
       
@@ -157,9 +180,9 @@
       
         <tags>
             
-            <tag> 健康 </tag>
-            
             <tag> 饮料 </tag>
+            
+            <tag> 健康 </tag>
             
         </tags>
       
@@ -230,9 +253,9 @@
       
         <tags>
             
-            <tag> 睡眠 </tag>
-            
             <tag> 健康 </tag>
+            
+            <tag> 睡眠 </tag>
             
         </tags>
       
@@ -289,9 +312,9 @@
       
         <tags>
             
-            <tag> HTML </tag>
+            <tag> 浏览器 </tag>
             
-            <tag> 浏览器解析 </tag>
+            <tag> 前端 </tag>
             
         </tags>
       
